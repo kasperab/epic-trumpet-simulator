@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://lqo6uldtiql5"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/test/test-1450-50-11"
+guid = "{330eb800-c680-4903-ae58-b127ae086572}"
+name = "test-1450-50-11"

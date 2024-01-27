@@ -30,9 +30,6 @@ font_size = 64
 [node name="MusicController" type="Node3D" parent="." node_paths=PackedStringArray("notesController")]
 script = ExtResource("1_13a6j")
 backgroundMusic = ExtResource("2_chxoo")
-tempo = null
-eventSequence = Array[EventAsset]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
-beatPosSequence = Array[float]([4.0, 6.0, 6.5, 6.75, 7.0, 7.25, 8.0, 10.0, 10.5, 10.75, 11.0, 11.25, 12.0, 13.5, 14.5, 15.5, 16.5, 17.5, 18.0, 18.5, 19.0, 19.5])
 testAsset = SubResource("EventAsset_wtgv6")
 notesController = NodePath("../NoteArea/Notes")
 startBeat = 4

@@ -4,6 +4,6 @@
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
-path = "event:/Trumpet"
+path = "event:/trumpet"
 guid = "{ac034382-c8ad-410a-82a2-b8a381f53de0}"
-name = "Trumpet"
+name = "trumpet"

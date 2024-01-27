@@ -20,10 +20,6 @@ mesh = SubResource("BoxMesh_ihtrc")
 
 [node name="TestMusicPlayer" type="Node3D" parent="."]
 script = ExtResource("1_hjprs")
-recordMode = true
 backgroundMusic = ExtResource("2_hg0ag")
-tempo = null
-eventSequence = Array[EventAsset]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
-beatPosSequence = Array[float]([4.0, 6.0, 6.5, 6.75, 7.0, 7.25, 8.0, 10.0, 10.5, 10.75, 11.0, 11.25, 12.0, 13.5, 14.5, 15.5, 16.5, 17.5, 18.0, 18.5, 19.0, 19.5])
+noteMapping = Array[int]([2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1])
 testAsset = SubResource("EventAsset_d3asg")
-startBeat = null
