@@ -13,3 +13,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# Fmod-specific ignores
+addons/FMOD/editor/cache/
+
+# macOS-specific ignores
+.DS_Store
