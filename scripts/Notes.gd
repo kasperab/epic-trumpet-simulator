@@ -17,7 +17,7 @@ func _process(delta):
 			timer = 2
 		else:
 			timer -= delta
-			
+		
 	for child in get_children():
 		var y = child.position.y + speed * delta
 		if y >= remove:

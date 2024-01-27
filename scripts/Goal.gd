@@ -1,7 +1,20 @@
 extends HBoxContainer
 
-var score = 10
+class_name Goal
+
+@export var musicController : MusicController
+@export var initialScore = 10
+var score
 var combo = 1
+var inGame = false
+
+func _ready():
+	score = initialScore
+	update_ui()
+	
+func _process(delta):
+	if ($"../Notes".get_child_count() == 0 && musicController.is_sequence_empty() && inGame):
+		finish_game(true)
 
 func _input(event):
 	for child in get_children():
@@ -20,14 +33,30 @@ func change_score(points):
 	if points > 0:
 		score += points * combo
 		combo += 1
-		$"../Combo".text = "x" + str(combo)
 	else:
 		score += points
 		combo = 1
-		$"../Combo".text = ""
-	$"../Score".text = str(score)
+		
 	if score <= 0:
-		score = 10
+		finish_game(false)
+		
+	update_ui()
+		
+func update_ui():
 		$"../Score".text = str(score)
-		$"../../Menu".show_menu()
-		$"../Notes".reset()
+		if(combo > 1):
+			$"../Combo".text = "x" + str(combo)
+		else:
+			$"../Combo".text = ""
+			
+func start_game():
+	musicController.start()
+	inGame = true
+		
+func finish_game(victory):
+	score = initialScore
+	update_ui()
+	$"../Notes".reset()
+	$"../../Menu".show_menu(victory)
+	musicController.reset()
+	inGame = false

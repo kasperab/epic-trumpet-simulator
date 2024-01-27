@@ -1,12 +1,11 @@
 extends ColorRect
 
-func _ready():
-	get_tree().paused = true
+@export var goal : Goal
 
 func _on_play_pressed():
-	get_tree().paused = false
+	goal.start_game()
 	hide()
 
-func show_menu():
-	get_tree().paused = true
+func show_menu(victory):
 	show()
+	$"Victory".visible = victory
