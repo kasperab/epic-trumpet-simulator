@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt3x8y2cwejwx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gldt2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whbkt"]
+size = Vector2(50, 50)
+
+[node name="Note" type="NinePatchRect"]
+offset_right = 50.0
+offset_bottom = 50.0
+texture = SubResource("NoiseTexture2D_gldt2")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_whbkt")
