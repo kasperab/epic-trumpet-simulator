@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1nst1vfw3fs5"]
+[gd_scene load_steps=3 format=3 uid="uid://b1nst1vfw3fs5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ihtrc"]
+
+[sub_resource type="EventAsset" id="EventAsset_ywmqj"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/Test_Drums_130BPM"
+guid = "{a5f01dd1-e654-4708-b113-3b151f94a45b}"
+name = "Test_Drums_130BPM"
 
 [node name="Node3D" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ihtrc")
+
+[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
+play_event = 1
+stop_event = 3
+event = SubResource("EventAsset_ywmqj")
