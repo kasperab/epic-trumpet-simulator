@@ -31,12 +31,14 @@ func get_fall_duration():
 	var distanceToGoal = $"../Goal".position.y - spawn
 	return distanceToGoal / speed
 
-func spawnNote(eventAsset, number = 0, length = 1):
+func spawnNote(eventAsset, number = 0, duration = 1):
 	if x_positions.size() == 0:
 		for goal in $"../Goal".get_children():
 			x_positions.append(goal.position.x)
 	var new_note = note.instantiate()
 	new_note.eventToPlay = eventAsset
+	
+	var length = duration * speed
 	new_note.position = Vector2(x_positions[number], spawn - new_note.size.y * length)
 	new_note.scale = Vector2(1, length)
 	add_child(new_note)

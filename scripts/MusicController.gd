@@ -28,6 +28,10 @@ var playbackInstance: EventInstance
 @export var notesController : Notes
 @export var startBeat : int = 16
 
+@export var minDuration : float = 0.25
+@export var durationQuanta : float = 1
+@export var durationAdjustment : float = -0.125
+
 var noteFallBeatDuration : float
 
 func list_files_in_directory(path):
@@ -94,7 +98,13 @@ func _process(delta):
 	if(currentSequence.size() > 0):
 		var beatPos = currentSequence[0].beatPos + startBeat - noteFallBeatDuration
 		if(get_beat_pos() >= beatPos):
-			notesController.spawnNote(currentSequence[0].soundEvent, noteMapping[currentSequence[0].note])
+			#var duration = currentSequence[0].duration + durationAdjustment
+			#duration = round(duration / durationQuanta) * durationQuanta
+			#duration = max(duration, minDuration)
+			var duration = currentSequence[0].duration
+			duration = int(duration / durationQuanta) * durationQuanta
+			duration = max(duration, minDuration) + durationAdjustment
+			notesController.spawnNote(currentSequence[0].soundEvent, noteMapping[currentSequence[0].note], beat_to_time(duration))
 			currentSequence.remove_at(0)
 			
 
@@ -108,6 +118,11 @@ func time_to_beat(seconds):
 	var bps = tempo / 60
 	var interval = 1 / bps
 	return seconds / interval
+	
+func beat_to_time(beatPos):
+	var bps = tempo / 60
+	var interval = 1 / bps
+	return beatPos * interval
 	
 func get_beat_pos():
 	var subPos = min(time_to_beat(time), 1)

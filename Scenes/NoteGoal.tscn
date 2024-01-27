@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cbqjsfr702rtf"]
+
+[ext_resource type="Script" path="res://scripts/SingleNoteGoal.gd" id="1_0c6wj"]
+
+[sub_resource type="Gradient" id="Gradient_06cwx"]
+offsets = PackedFloat32Array(0, 0.487097, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.486275, 0.486275, 0.486275, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xriyn"]
+gradient = SubResource("Gradient_06cwx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpq2m"]
+size = Vector2(50, 100)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2irie"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mpx5f"]
+width = 10
+height = 10
+
+[node name="Note1" type="NinePatchRect"]
+custom_minimum_size = Vector2(50, 0)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -0.5
+offset_right = 50.0
+offset_bottom = 0.5
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_xriyn")
+script = ExtResource("1_0c6wj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(25, 5.5)
+shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Particles" type="GPUParticles2D" parent="."]
+position = Vector2(25, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_2irie")
+texture = SubResource("NoiseTexture2D_mpx5f")
+lifetime = 0.2
+
+[connection signal="area_exited" from="Area2D" to="." method="trigger_area_exit"]

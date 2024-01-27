@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=11 format=3 uid="uid://cmxcn2iqij3b0"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
 [ext_resource type="EventAsset" uid="uid://ck7tc8b035e75" path="res://addons/FMOD/editor/resources/events/{a5f01dd1-e654-4708-b113-3b151f94a45b}.tres" id="2_chxoo"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="2_icjoi"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
-[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://scenes/stage.tscn" id="6_brsos"]
+[ext_resource type="PackedScene" uid="uid://cbqjsfr702rtf" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
+[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://Scenes/stage.tscn" id="6_brsos"]
 
 [sub_resource type="EventAsset" id="EventAsset_wtgv6"]
 is_oneshot = true
@@ -14,28 +15,6 @@ max_distance = 20.0
 path = "event:/Trumpet"
 guid = "{ac034382-c8ad-410a-82a2-b8a381f53de0}"
 name = "Trumpet"
-
-[sub_resource type="Gradient" id="Gradient_06cwx"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xriyn"]
-gradient = SubResource("Gradient_06cwx")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpq2m"]
-size = Vector2(50, 50)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dkih1"]
-particle_flag_disable_z = true
-direction = Vector3(0, 0, 0)
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 500.0
-initial_velocity_max = 500.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yomyi"]
-width = 10
-height = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_u3mkg"]
 font_size = 64
@@ -46,6 +25,7 @@ height = 50
 [node name="Main" type="Node3D"]
 
 [node name="MusicController" type="Node3D" parent="." node_paths=PackedStringArray("notesController")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00767577, 0, -0.00507379)
 script = ExtResource("1_13a6j")
 backgroundMusic = ExtResource("2_chxoo")
 testAsset = SubResource("EventAsset_wtgv6")
@@ -59,6 +39,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PointLabelArea" type="Control" parent="NoteArea"]
+anchors_preset = 0
+offset_left = 958.0
+offset_top = 100.0
+offset_right = 998.0
+offset_bottom = 140.0
 
 [node name="Notes" type="Control" parent="NoteArea"]
 layout_mode = 1
@@ -77,129 +64,34 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
-offset_bottom = -50.0
+offset_top = -102.0
+offset_bottom = -92.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 200
 alignment = 1
 script = ExtResource("2_icjoi")
 musicController = NodePath("../../MusicController")
-initialScore = 0
+accuracyThresholds = Array[int]([60, 40, 20])
+accuracyPoints = Array[int]([100, 200, 300])
 
-[node name="Note1" type="NinePatchRect" parent="NoteArea/Goal"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Note1" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
-texture = SubResource("GradientTexture1D_xriyn")
 
-[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note1/Area2D"]
-position = Vector2(25, 25)
-shape = SubResource("RectangleShape2D_gpq2m")
-
-[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note1"]
-position = Vector2(25, 25)
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_dkih1")
-texture = SubResource("NoiseTexture2D_yomyi")
-lifetime = 0.2
-
-[node name="Note2" type="NinePatchRect" parent="NoteArea/Goal"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Note2" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
-texture = SubResource("GradientTexture1D_xriyn")
 
-[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note2/Area2D"]
-position = Vector2(25, 25)
-shape = SubResource("RectangleShape2D_gpq2m")
-
-[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note2"]
-position = Vector2(25, 25)
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_dkih1")
-texture = SubResource("NoiseTexture2D_yomyi")
-lifetime = 0.2
-
-[node name="Note3" type="NinePatchRect" parent="NoteArea/Goal"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Note3" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
-texture = SubResource("GradientTexture1D_xriyn")
 
-[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note3/Area2D"]
-position = Vector2(25, 25)
-shape = SubResource("RectangleShape2D_gpq2m")
-
-[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note3"]
-position = Vector2(25, 25)
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_dkih1")
-texture = SubResource("NoiseTexture2D_yomyi")
-lifetime = 0.2
-
-[node name="Note4" type="NinePatchRect" parent="NoteArea/Goal"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Note4" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
-texture = SubResource("GradientTexture1D_xriyn")
 
-[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note4/Area2D"]
-position = Vector2(25, 25)
-shape = SubResource("RectangleShape2D_gpq2m")
-
-[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note4"]
-position = Vector2(25, 25)
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_dkih1")
-texture = SubResource("NoiseTexture2D_yomyi")
-lifetime = 0.2
-
-[node name="Note5" type="NinePatchRect" parent="NoteArea/Goal"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Note5" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
-texture = SubResource("GradientTexture1D_xriyn")
 
-[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note5/Area2D"]
-position = Vector2(25, 25)
-shape = SubResource("RectangleShape2D_gpq2m")
-
-[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note5"]
-position = Vector2(25, 25)
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_dkih1")
-texture = SubResource("NoiseTexture2D_yomyi")
-lifetime = 0.2
-
-[node name="Note6" type="NinePatchRect" parent="NoteArea/Goal"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Note6" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
-texture = SubResource("GradientTexture1D_xriyn")
-
-[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note6/Area2D"]
-position = Vector2(25, 25)
-shape = SubResource("RectangleShape2D_gpq2m")
-
-[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note6"]
-position = Vector2(25, 25)
-emitting = false
-amount = 10
-process_material = SubResource("ParticleProcessMaterial_dkih1")
-texture = SubResource("NoiseTexture2D_yomyi")
-lifetime = 0.2
 
 [node name="Score" type="Label" parent="NoteArea"]
 layout_mode = 0
@@ -270,10 +162,10 @@ text = "Victory!"
 
 [node name="Stage" parent="." instance=ExtResource("6_brsos")]
 
-[connection signal="area_exited" from="NoteArea/Goal/Note1/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
-[connection signal="area_exited" from="NoteArea/Goal/Note2/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
-[connection signal="area_exited" from="NoteArea/Goal/Note3/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
-[connection signal="area_exited" from="NoteArea/Goal/Note4/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
-[connection signal="area_exited" from="NoteArea/Goal/Note5/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
-[connection signal="area_exited" from="NoteArea/Goal/Note6/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exit" from="NoteArea/Goal/Note1" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exit" from="NoteArea/Goal/Note2" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exit" from="NoteArea/Goal/Note3" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exit" from="NoteArea/Goal/Note4" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exit" from="NoteArea/Goal/Note5" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exit" from="NoteArea/Goal/Note6" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="pressed" from="Menu/Play" to="Menu" method="_on_play_pressed"]

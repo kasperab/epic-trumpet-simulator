@@ -3,20 +3,24 @@ extends HBoxContainer
 class_name Goal
 
 @export var musicController : MusicController
-@export var initialScore = 10
 @onready var health = $"../Health"
+
+@export var accuracyThresholds : Array[int]
+@export var accuracyPoints : Array[int]
 var score
 var combo = 1
 var playing : Array[Control]
 var inGame = false
 
+var pointPopUp = preload("res://Scenes/PointLabel.tscn")
+
 func _ready():
-	score = initialScore
+	score = 0
 	update_ui()
 	for _child in get_children():
 		playing.append(null)
 
-func _process(delta):
+func _process(_delta):
 	if ($"../Notes".get_child_count() == 0 && musicController.is_sequence_empty() && inGame):
 		finish_game(true)
 
@@ -25,40 +29,66 @@ func _input(event):
 	for child in get_children():
 		if event.is_action_pressed(child.name):
 			var correct_press = false
+			var lastStartY = 0
+			var lastNote = null
+			
 			if child.get_node("Area2D").has_overlapping_areas():
 				for area in child.get_node("Area2D").get_overlapping_areas():
 					var note = area.get_parent()
-					var y = note.position.y + note.size.y * note.scale.y
-					if y >= position.y and y <= position.y + size.y:
-						correct_press = true
-						playing[index] = note
-						var eventAsset : EventAsset = area.get_parent().eventToPlay
-						if(eventAsset):
-							FMODRuntime.play_one_shot(eventAsset)
-						child.get_node("Particles").emitting = true
+					var startY = note.position.y + note.size.y * note.scale.y
+					
+					if(startY > lastStartY):
+						lastStartY = startY
+						lastNote = note
+					
+			if lastNote:
+				var distToY = abs(lastStartY - position.y)
+				lastNote.points = 0
+				var accuracyIndex = -1
+				for threshold in accuracyThresholds:
+					if distToY > threshold:
+						break
+					accuracyIndex += 1
+				
+				if accuracyIndex > -1:
+					lastNote.points = accuracyPoints[accuracyIndex]
+					
+					playing[index] = lastNote
+					var eventAsset : EventAsset = lastNote.eventToPlay
+					if(eventAsset):
+						FMODRuntime.play_one_shot(eventAsset)
+					child.get_node("Particles").emitting = true
+					correct_press = true
+
 			if not correct_press:
-				change_score(-1)
+				miss()
 		elif event.is_action_released(child.name) and playing[index]:
 			if playing[index].position.y >= position.y:
-				change_score(1)
+				change_score(playing[index].points)
 			else:
-				change_score(-1)
-			playing[index].queue_free()
-			playing[index] = null
+				miss()
+			
+			playing[index].scored = true
 			child.get_node("Particles").emitting = false
 		index += 1
-
-func change_score(points):
-	if points > 0:
-		score += points * combo
-		combo += 1
-		health.value += points
-	else:
-		combo = 1
-		health.value += points
+		
+func miss():
+	combo = 1
+	health.value -= 1
 
 	if health.value <= 0:
 		finish_game(false)
+		
+	update_ui()
+
+func change_score(points):
+	var pointInstance = pointPopUp.instantiate()
+	pointInstance.get_child(0).text = str(points)
+	$"../PointLabelArea".add_child(pointInstance)
+	
+	score += points * combo
+	combo += 1
+	health.value += 1
 
 	update_ui()
 
@@ -70,11 +100,11 @@ func update_ui():
 			$"../Combo".text = ""
 
 func start_game():
+	score = 0
 	musicController.start()
 	inGame = true
 
 func finish_game(victory):
-	score = initialScore
 	health.value = health.max_value
 	update_ui()
 	$"../Notes".reset()
@@ -85,9 +115,13 @@ func finish_game(victory):
 func _on_area_2d_area_exited(area):
 	if playing.has(area.get_parent()):
 		var index = playing.find(area.get_parent()) 
+		if(!playing[index].scored):
+			var points = playing[index].points
+			change_score(points)
+			get_children()[index].get_node("Particles").emitting = false
+		
 		playing[index] = null
-		change_score(1)
-		get_children()[index].get_node("Particles").emitting = false
 	else:
-		change_score(-1)
+		miss()
+		
 	area.get_parent().queue_free()
