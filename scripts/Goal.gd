@@ -35,6 +35,7 @@ func _input(event):
 						var eventAsset : EventAsset = area.get_parent().eventToPlay
 						if(eventAsset):
 							FMODRuntime.play_one_shot(eventAsset)
+						child.get_node("Particles").emitting = true
 			if not correct_press:
 				change_score(-1)
 		elif event.is_action_released(child.name) and playing[index]:
@@ -44,6 +45,7 @@ func _input(event):
 				change_score(-1)
 			playing[index].queue_free()
 			playing[index] = null
+			child.get_node("Particles").emitting = false
 		index += 1
 
 func change_score(points):
@@ -82,8 +84,10 @@ func finish_game(victory):
 
 func _on_area_2d_area_exited(area):
 	if playing.has(area.get_parent()):
-		playing[playing.find(area.get_parent())] = null
+		var index = playing.find(area.get_parent()) 
+		playing[index] = null
 		change_score(1)
+		get_children()[index].get_node("Particles").emitting = false
 	else:
 		change_score(-1)
 	area.get_parent().queue_free()

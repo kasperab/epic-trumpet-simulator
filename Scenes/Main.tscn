@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=15 format=3 uid="uid://cmxcn2iqij3b0"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
@@ -22,6 +22,20 @@ gradient = SubResource("Gradient_06cwx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpq2m"]
 size = Vector2(50, 50)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dkih1"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yomyi"]
+width = 10
+height = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_u3mkg"]
 font_size = 64
@@ -84,6 +98,14 @@ texture = SubResource("GradientTexture1D_xriyn")
 position = Vector2(25, 25)
 shape = SubResource("RectangleShape2D_gpq2m")
 
+[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note1"]
+position = Vector2(25, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_dkih1")
+texture = SubResource("NoiseTexture2D_yomyi")
+lifetime = 0.2
+
 [node name="Note2" type="NinePatchRect" parent="NoteArea/Goal"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -94,6 +116,14 @@ texture = SubResource("GradientTexture1D_xriyn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note2/Area2D"]
 position = Vector2(25, 25)
 shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note2"]
+position = Vector2(25, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_dkih1")
+texture = SubResource("NoiseTexture2D_yomyi")
+lifetime = 0.2
 
 [node name="Note3" type="NinePatchRect" parent="NoteArea/Goal"]
 custom_minimum_size = Vector2(50, 0)
@@ -106,6 +136,14 @@ texture = SubResource("GradientTexture1D_xriyn")
 position = Vector2(25, 25)
 shape = SubResource("RectangleShape2D_gpq2m")
 
+[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note3"]
+position = Vector2(25, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_dkih1")
+texture = SubResource("NoiseTexture2D_yomyi")
+lifetime = 0.2
+
 [node name="Note4" type="NinePatchRect" parent="NoteArea/Goal"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -116,6 +154,14 @@ texture = SubResource("GradientTexture1D_xriyn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note4/Area2D"]
 position = Vector2(25, 25)
 shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note4"]
+position = Vector2(25, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_dkih1")
+texture = SubResource("NoiseTexture2D_yomyi")
+lifetime = 0.2
 
 [node name="Note5" type="NinePatchRect" parent="NoteArea/Goal"]
 custom_minimum_size = Vector2(50, 0)
@@ -128,6 +174,14 @@ texture = SubResource("GradientTexture1D_xriyn")
 position = Vector2(25, 25)
 shape = SubResource("RectangleShape2D_gpq2m")
 
+[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note5"]
+position = Vector2(25, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_dkih1")
+texture = SubResource("NoiseTexture2D_yomyi")
+lifetime = 0.2
+
 [node name="Note6" type="NinePatchRect" parent="NoteArea/Goal"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
@@ -138,6 +192,14 @@ texture = SubResource("GradientTexture1D_xriyn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note6/Area2D"]
 position = Vector2(25, 25)
 shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Particles" type="GPUParticles2D" parent="NoteArea/Goal/Note6"]
+position = Vector2(25, 25)
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_dkih1")
+texture = SubResource("NoiseTexture2D_yomyi")
+lifetime = 0.2
 
 [node name="Score" type="Label" parent="NoteArea"]
 layout_mode = 0
