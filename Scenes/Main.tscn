@@ -162,6 +162,7 @@ text = "Victory!"
 
 [node name="Stage" parent="." instance=ExtResource("6_brsos")]
 
+[connection signal="on_beat" from="MusicController" to="Stage" method="trigger_beat"]
 [connection signal="area_exit" from="NoteArea/Goal/Note1" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="area_exit" from="NoteArea/Goal/Note2" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="area_exit" from="NoteArea/Goal/Note3" to="NoteArea/Goal" method="_on_area_2d_area_exited"]

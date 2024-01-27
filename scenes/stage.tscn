@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://6inb258mgxsu"]
+[gd_scene load_steps=13 format=3 uid="uid://6inb258mgxsu"]
 
+[ext_resource type="Script" path="res://Scenes/StageManager.gd" id="1_ridm5"]
 [ext_resource type="PackedScene" uid="uid://cepoga858uimu" path="res://characters/arm_left.tscn" id="2_e3qoe"]
 [ext_resource type="PackedScene" uid="uid://cijip4m872hwx" path="res://instruments/synth.fbx" id="3_ofret"]
 [ext_resource type="PackedScene" uid="uid://kyjakmjqnscf" path="res://characters/synth_character.fbx" id="4_ogl8v"]
@@ -18,7 +19,10 @@ roughness = 0.2
 
 [sub_resource type="BoxMesh" id="BoxMesh_df2kn"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainCamera")]
+script = ExtResource("1_ridm5")
+mainCamera = NodePath("Camera3D")
+fovModifier = -5.0
 
 [node name="wall" type="MeshInstance3D" parent="."]
 transform = Transform3D(48.5785, 0, -2.45371e-22, -7.40625e-22, -1.04175e-08, -16.0942, 0, 0.238325, -7.03499e-07, -0.0165544, 6.83409, -7.48891)

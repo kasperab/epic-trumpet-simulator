@@ -32,6 +32,8 @@ var playbackInstance: EventInstance
 @export var durationQuanta : float = 1
 @export var durationAdjustment : float = -0.125
 
+signal on_beat
+
 var noteFallBeatDuration : float
 
 func list_files_in_directory(path):
@@ -113,6 +115,7 @@ func beat_callback(args):
 		tempo = args.properties.tempo
 		beatCounter += 1
 		time = 0
+		call_deferred("emit_signal", "on_beat")
 	
 func time_to_beat(seconds):
 	var bps = tempo / 60
