@@ -1,4 +1,4 @@
-extends Control
+extends HBoxContainer
 
 var score = 10
 var combo = 1

@@ -56,7 +56,7 @@ script = ExtResource("1_6pve0")
 remove = 1080.0
 speed = 400.0
 
-[node name="Goal" type="Control" parent="NoteArea"]
+[node name="Goal" type="HBoxContainer" parent="NoteArea"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -66,18 +66,73 @@ offset_top = -100.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 200
+alignment = 1
 script = ExtResource("2_icjoi")
 
 [node name="Note1" type="NinePatchRect" parent="NoteArea/Goal"]
-layout_mode = 0
-offset_left = 960.0
-offset_right = 1010.0
-offset_bottom = 50.0
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
 texture = SubResource("GradientTexture1D_xriyn")
 
 [node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note1/Area2D"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Note2" type="NinePatchRect" parent="NoteArea/Goal"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_xriyn")
+
+[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note2/Area2D"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Note3" type="NinePatchRect" parent="NoteArea/Goal"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_xriyn")
+
+[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note3/Area2D"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Note4" type="NinePatchRect" parent="NoteArea/Goal"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_xriyn")
+
+[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note4/Area2D"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Note5" type="NinePatchRect" parent="NoteArea/Goal"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_xriyn")
+
+[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note5/Area2D"]
+position = Vector2(25, 25)
+shape = SubResource("RectangleShape2D_gpq2m")
+
+[node name="Note6" type="NinePatchRect" parent="NoteArea/Goal"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+texture = SubResource("GradientTexture1D_xriyn")
+
+[node name="Area2D" type="Area2D" parent="NoteArea/Goal/Note6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoteArea/Goal/Note6/Area2D"]
 position = Vector2(25, 25)
 shape = SubResource("RectangleShape2D_gpq2m")
 

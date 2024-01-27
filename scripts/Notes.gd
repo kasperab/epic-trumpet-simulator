@@ -8,6 +8,7 @@ class_name Notes
 @export var speed : float
 var note = preload("res://Scenes/Note.tscn")
 var timer = 0
+var x_positions : Array[float]
 
 func _process(delta):
 	if debugSpawn:
@@ -34,9 +35,11 @@ func get_fall_duration():
 	var distanceToGoal = $"../Goal".position.y - spawn
 	return distanceToGoal / speed
 	
-func spawnNote(eventAsset):
+func spawnNote(eventAsset, number = 0):
+	if x_positions.size() == 0:
+		for goal in $"../Goal".get_children():
+			x_positions.append(goal.position.x)
 	var new_note = note.instantiate()
 	new_note.eventToPlay = eventAsset
-	new_note.position = Vector2(960, spawn - new_note.scale.y)
+	new_note.position = Vector2(x_positions[number], spawn - new_note.scale.y)
 	add_child(new_note)
-
