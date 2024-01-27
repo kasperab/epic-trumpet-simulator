@@ -189,4 +189,10 @@ offset_right = 523.0
 offset_bottom = 152.0
 text = "Victory!"
 
+[connection signal="area_exited" from="NoteArea/Goal/Note1/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exited" from="NoteArea/Goal/Note2/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exited" from="NoteArea/Goal/Note3/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exited" from="NoteArea/Goal/Note4/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exited" from="NoteArea/Goal/Note5/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
+[connection signal="area_exited" from="NoteArea/Goal/Note6/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="pressed" from="Menu/Play" to="Menu" method="_on_play_pressed"]

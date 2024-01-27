@@ -1,4 +1,4 @@
-extends NinePatchRect
+extends Control
 
 var eventToPlay : EventAsset
 
