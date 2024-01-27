@@ -4,6 +4,7 @@ class_name Goal
 
 @export var musicController : MusicController
 @export var initialScore = 10
+@onready var health = $"../Health"
 var score
 var combo = 1
 var playing : Array[Control]
@@ -49,11 +50,12 @@ func change_score(points):
 	if points > 0:
 		score += points * combo
 		combo += 1
+		health.value += points
 	else:
-		score += points
 		combo = 1
+		health.value += points
 
-	if score <= 0:
+	if health.value <= 0:
 		finish_game(false)
 
 	update_ui()
@@ -71,6 +73,7 @@ func start_game():
 
 func finish_game(victory):
 	score = initialScore
+	health.value = health.max_value
 	update_ui()
 	$"../Notes".reset()
 	$"../../Menu".show_menu(victory)

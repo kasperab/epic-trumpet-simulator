@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=13 format=3 uid="uid://cmxcn2iqij3b0"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
@@ -25,6 +25,9 @@ size = Vector2(50, 50)
 
 [sub_resource type="LabelSettings" id="LabelSettings_u3mkg"]
 font_size = 64
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p6ipb"]
+height = 50
 
 [node name="Main" type="Node3D"]
 
@@ -68,7 +71,7 @@ theme_override_constants/separation = 200
 alignment = 1
 script = ExtResource("2_icjoi")
 musicController = NodePath("../../MusicController")
-initialScore = 5
+initialScore = 0
 
 [node name="Note1" type="NinePatchRect" parent="NoteArea/Goal"]
 custom_minimum_size = Vector2(50, 0)
@@ -148,6 +151,19 @@ layout_mode = 0
 offset_top = 70.0
 offset_right = 40.0
 offset_bottom = 93.0
+
+[node name="Health" type="TextureProgressBar" parent="NoteArea"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+max_value = 10.0
+value = 10.0
+fill_mode = 1
+texture_progress = SubResource("NoiseTexture2D_p6ipb")
 
 [node name="Menu" type="ColorRect" parent="." node_paths=PackedStringArray("goal")]
 process_mode = 3
