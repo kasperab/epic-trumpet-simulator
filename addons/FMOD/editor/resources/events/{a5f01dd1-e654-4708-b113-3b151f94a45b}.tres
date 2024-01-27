@@ -1,7 +1,6 @@
 [gd_resource type="EventAsset" format=3 uid="uid://ck7tc8b035e75"]
 
 [resource]
-is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
 path = "event:/Test_Drums_130BPM"

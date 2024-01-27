@@ -1,21 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1nst1vfw3fs5"]
+[gd_scene load_steps=5 format=3 uid="uid://b1nst1vfw3fs5"]
+
+[ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_hjprs"]
+[ext_resource type="EventAsset" uid="uid://ck7tc8b035e75" path="res://addons/FMOD/editor/resources/events/{a5f01dd1-e654-4708-b113-3b151f94a45b}.tres" id="2_hg0ag"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ihtrc"]
 
-[sub_resource type="EventAsset" id="EventAsset_ywmqj"]
+[sub_resource type="EventAsset" id="EventAsset_d3asg"]
 is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
-path = "event:/Test_Drums_130BPM"
-guid = "{a5f01dd1-e654-4708-b113-3b151f94a45b}"
-name = "Test_Drums_130BPM"
+path = "event:/Trumpet"
+guid = "{ac034382-c8ad-410a-82a2-b8a381f53de0}"
+name = "Trumpet"
 
 [node name="Node3D" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ihtrc")
 
-[node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
-play_event = 1
-stop_event = 3
-event = SubResource("EventAsset_ywmqj")
+[node name="TestMusicPlayer" type="Node3D" parent="."]
+script = ExtResource("1_hjprs")
+recordMode = true
+backgroundMusic = ExtResource("2_hg0ag")
+tempo = null
+eventSequence = Array[EventAsset]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+beatPosSequence = Array[float]([4.0, 6.0, 6.5, 6.75, 7.0, 7.25, 8.0, 10.0, 10.5, 10.75, 11.0, 11.25, 12.0, 13.5, 14.5, 15.5, 16.5, 17.5, 18.0, 18.5, 19.0, 19.5])
+testAsset = SubResource("EventAsset_d3asg")
+startBeat = null

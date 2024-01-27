@@ -9,6 +9,9 @@ func _input(event):
 			if child.get_node("Area2D").has_overlapping_areas():
 				change_score(1)
 				for area in child.get_node("Area2D").get_overlapping_areas():
+					var eventAsset : EventAsset = area.get_parent().eventToPlay
+					if(eventAsset):
+						FMODRuntime.play_one_shot(eventAsset)
 					area.get_parent().queue_free()
 			else:
 				change_score(-1)
