@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=12 format=3 uid="uid://cmxcn2iqij3b0"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
 [ext_resource type="EventAsset" uid="uid://ck7tc8b035e75" path="res://addons/FMOD/editor/resources/events/{a5f01dd1-e654-4708-b113-3b151f94a45b}.tres" id="2_chxoo"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="2_icjoi"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
+[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://scenes/stage.tscn" id="6_brsos"]
 
 [sub_resource type="EventAsset" id="EventAsset_wtgv6"]
 is_oneshot = true
@@ -188,6 +189,8 @@ offset_top = 126.0
 offset_right = 523.0
 offset_bottom = 152.0
 text = "Victory!"
+
+[node name="Stage" parent="." instance=ExtResource("6_brsos")]
 
 [connection signal="area_exited" from="NoteArea/Goal/Note1/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="area_exited" from="NoteArea/Goal/Note2/Area2D" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
