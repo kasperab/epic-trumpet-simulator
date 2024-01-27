@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://ch4hdj1f2xlxj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p3xh5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px4o6"]
+albedo_color = Color(0.0627451, 0.137255, 0.231373, 1)
+
+[sub_resource type="Animation" id="Animation_od2k1"]
+resource_name = "wave"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.487539, 0.407167, -0.22321, 0.6, 1, -0.521992, 0.51923, -0.336607)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../arm_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.582853, 0.601055, 0.0196427, 0.6, 1, 0.61009, 0.640793, 0.00530696)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2as0"]
+_data = {
+"wave": SubResource("Animation_od2k1")
+}
+
+[node name="crowd" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77545, -0.195316, 1.19208)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.13648, -0.104385, -0.0266557, 0.0404464, 0.339533, 0.0936667, -0.00149512, -0.343576, 0.100663, -0.487539, 0.407167, -0.22321)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="arm_l"]
+autoplay = "wave"
+libraries = {
+"": SubResource("AnimationLibrary_y2as0")
+}
+
+[node name="arm_r" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.582853, 0.601055, 0.0196427)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")

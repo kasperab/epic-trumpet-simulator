@@ -1,0 +1,252 @@
+[gd_scene load_steps=12 format=3 uid="uid://6inb258mgxsu"]
+
+[ext_resource type="PackedScene" uid="uid://ch4hdj1f2xlxj" path="res://scenes/crowd.tscn" id="1_u6vnk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8fho6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_45m26"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_df2kn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u11k4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_p3xh5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_px4o6"]
+albedo_color = Color(0.0627451, 0.137255, 0.231373, 1)
+
+[sub_resource type="Animation" id="Animation_od2k1"]
+resource_name = "wave"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.487539, 0.407167, -0.22321, 0.6, 1, -0.521992, 0.51923, -0.336607)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../arm_r")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.582853, 0.601055, 0.0196427, 0.6, 1, 0.61009, 0.640793, 0.00530696)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y2as0"]
+_data = {
+"wave": SubResource("Animation_od2k1")
+}
+
+[sub_resource type="Animation" id="Animation_nsnil"]
+resource_name = "wave"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.1, 1, 0.540613, 0.539427, 0.0418749, 0.6, 1, 0.582853, 0.601055, 0.0196427)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jwvoy"]
+_data = {
+"wave": SubResource("Animation_nsnil")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="wall" type="MeshInstance3D" parent="."]
+transform = Transform3D(48.5785, 0, -2.45371e-22, -7.40625e-22, -1.04175e-08, -16.0942, 0, 0.238325, -7.03499e-07, -0.0165544, 6.83409, -13.4497)
+mesh = SubResource("BoxMesh_8fho6")
+
+[node name="podium" type="MeshInstance3D" parent="."]
+transform = Transform3D(9.87939, 0, 0, 0, 1.40364, 0, 0, 0, 8.42205, 0.029, -1.36827, -3.03677)
+mesh = SubResource("CylinderMesh_45m26")
+skeleton = NodePath("../Camera3D")
+
+[node name="stage" type="MeshInstance3D" parent="."]
+transform = Transform3D(40.798, -1.53176e-15, 2.46906e-15, 1.42298e-14, 4.39169, -2.46906e-15, -1.42298e-14, 1.53176e-15, 7.079, -0.0202765, -2.16363, -13.4038)
+mesh = SubResource("BoxMesh_df2kn")
+skeleton = NodePath("../wall")
+
+[node name="catwalk" type="MeshInstance3D" parent="stage"]
+transform = Transform3D(0.185928, -1.44669e-23, -1.70121e-23, 5.86826e-22, 1, -5.65954e-22, 6.22775e-23, -2.53772e-22, 0.645615, 0, 0, 0.771488)
+mesh = SubResource("BoxMesh_df2kn")
+skeleton = NodePath("../../wall")
+
+[node name="reference" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633988, -0.872882)
+mesh = SubResource("BoxMesh_u11k4")
+
+[node name="trumpeter" parent="." instance=ExtResource("1_u6vnk")]
+transform = Transform3D(-0.999481, 0, -0.0322133, 0, 1, 0, 0.0322133, 0, -0.999481, 0.0540044, 0.855621, -0.207068)
+skeleton = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -3.71902e-16, 3.4802e-16, 3.4802e-16, 0.997801, 0.0662739, -3.71902e-16, -0.0662739, 0.997801, 0.00728072, 1.34642, 3.51178)
+fov = 60.0
+
+[node name="crowds_l" type="Node3D" parent="."]
+transform = Transform3D(0.985721, 0, -0.168386, 0, 1, 0, 0.168386, 0, 0.985721, -0.352539, 0, 0.534485)
+
+[node name="crowd" parent="crowds_l" instance=ExtResource("1_u6vnk")]
+
+[node name="crowd2" type="MeshInstance3D" parent="crowds_l"]
+transform = Transform3D(0.920453, 0.0999511, 0.369592, -0.12428, 0.779566, -0.0316847, -0.370569, -0.0131812, 0.928654, 0.226376, -0.176954, 1.65598)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="crowds_l/crowd2"]
+transform = Transform3D(0.106381, -0.232203, -0.0658113, 0.0932333, 0.316454, 0.0562019, 0.0159926, -0.30027, 0.110124, -0.534769, 0.239093, -0.121152)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_r" type="MeshInstance3D" parent="crowds_l/crowd2"]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.597131, 0.374805, -0.07302)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="crowd3" type="MeshInstance3D" parent="crowds_l"]
+transform = Transform3D(0.761531, -0.109831, -0.627359, 0.258442, 0.650455, 0.0636339, 0.594371, -0.142109, 0.776126, -1.34038, 0.013407, 1.90115)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="crowds_l/crowd3"]
+transform = Transform3D(0.106381, -0.232203, -0.0658113, 0.0932333, 0.316454, 0.0562019, 0.0159926, -0.30027, 0.110124, -0.534769, 0.239093, -0.121152)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_r" type="MeshInstance3D" parent="crowds_l/crowd3"]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.597131, 0.374805, -0.07302)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="crowd4" type="MeshInstance3D" parent="crowds_l"]
+transform = Transform3D(0.843626, 0, -0.536932, 0, 1, 0, 0.536932, 0, 0.843626, -2.20748, -0.199818, 0.978438)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="crowds_l/crowd4"]
+transform = Transform3D(0.106381, -0.232203, -0.0658113, 0.0932333, 0.316454, 0.0562019, 0.0159926, -0.30027, 0.110124, -0.534769, 0.239093, -0.121152)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_r" type="MeshInstance3D" parent="crowds_l/crowd4"]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.597131, 0.374805, -0.07302)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="crowds_r" type="Node3D" parent="."]
+transform = Transform3D(0.878967, 0, 0.476883, 0, 1, 0, -0.476883, 0, 0.878967, 2.75657, 0, -0.28623)
+
+[node name="crowd" type="MeshInstance3D" parent="crowds_r"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.77545, -0.195316, 1.19208)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="crowds_r/crowd"]
+transform = Transform3D(0.13648, -0.104385, -0.0266557, 0.0404464, 0.339533, 0.0936667, -0.00149512, -0.343576, 0.100663, -0.487539, 0.407167, -0.22321)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="crowds_r/crowd/arm_l"]
+autoplay = "wave"
+libraries = {
+"": SubResource("AnimationLibrary_y2as0")
+}
+
+[node name="arm_r" type="MeshInstance3D" parent="crowds_r/crowd"]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.549061, 0.551753, 0.0374285)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="crowds_r/crowd/arm_r"]
+autoplay = "wave"
+libraries = {
+"": SubResource("AnimationLibrary_jwvoy")
+}
+
+[node name="crowd2" type="MeshInstance3D" parent="crowds_r"]
+transform = Transform3D(0.920453, 0.0999511, 0.369592, -0.12428, 0.779566, -0.0316847, -0.370569, -0.0131812, 0.928654, 0.226376, -0.176954, 1.65598)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="crowds_r/crowd2"]
+transform = Transform3D(0.106381, -0.232203, -0.0658113, 0.0932333, 0.316454, 0.0562019, 0.0159926, -0.30027, 0.110124, -0.534769, 0.239093, -0.121152)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_r" type="MeshInstance3D" parent="crowds_r/crowd2"]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.597131, 0.374805, -0.07302)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="crowd3" type="MeshInstance3D" parent="crowds_r"]
+transform = Transform3D(0.761531, -0.109831, -0.627359, 0.258442, 0.650455, 0.0636339, 0.594371, -0.142109, 0.776126, -1.34038, 0.013407, 1.90115)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="crowds_r/crowd3"]
+transform = Transform3D(0.106381, -0.232203, -0.0658113, 0.0932333, 0.316454, 0.0562019, 0.0159926, -0.30027, 0.110124, -0.534769, 0.239093, -0.121152)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_r" type="MeshInstance3D" parent="crowds_r/crowd3"]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.597131, 0.374805, -0.07302)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="crowd5" type="MeshInstance3D" parent="crowds_r"]
+transform = Transform3D(0.913201, 0.0689408, -0.394495, -0.0967285, 0.671247, 0.0337023, 0.395863, 0.00498135, 0.91828, -3.2209, -0.0550173, 1.40485)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="crowds_r/crowd5"]
+transform = Transform3D(0.106381, -0.232203, -0.0658113, 0.0932333, 0.316454, 0.0562019, 0.0159926, -0.30027, 0.110124, -0.534769, 0.239093, -0.121152)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_r" type="MeshInstance3D" parent="crowds_r/crowd5"]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.597131, 0.374805, -0.07302)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="crowd4" type="MeshInstance3D" parent="crowds_r"]
+transform = Transform3D(0.843626, 0, -0.536932, 0, 1, 0, 0.536932, 0, 0.843626, -2.20748, -0.199818, 0.978438)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_l" type="MeshInstance3D" parent="crowds_r/crowd4"]
+transform = Transform3D(0.106381, -0.232203, -0.0658113, 0.0932333, 0.316454, 0.0562019, 0.0159926, -0.30027, 0.110124, -0.534769, 0.239093, -0.121152)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
+
+[node name="arm_r" type="MeshInstance3D" parent="crowds_r/crowd4"]
+transform = Transform3D(0.0992716, 0.26779, -0.065705, -0.0332428, 0.3907, 0.079285, 0.0964631, -0.140946, 0.0949408, 0.597131, 0.374805, -0.07302)
+mesh = SubResource("CapsuleMesh_p3xh5")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_px4o6")
