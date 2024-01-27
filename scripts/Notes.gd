@@ -21,3 +21,8 @@ func _process(delta):
 			$"../Goal".change_score(-1)
 		else:
 			child.position = Vector2(child.position.x, y)
+
+func reset():
+	timer = 0
+	for child in get_children():
+		child.queue_free()

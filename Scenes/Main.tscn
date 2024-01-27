@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpcyc6nyhfsvt"]
+[gd_scene load_steps=8 format=3 uid="uid://cpcyc6nyhfsvt"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="2_icjoi"]
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
 
 [sub_resource type="Gradient" id="Gradient_06cwx"]
 
@@ -64,7 +65,7 @@ shape = SubResource("RectangleShape2D_gpq2m")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "0"
+text = "10"
 label_settings = SubResource("LabelSettings_u3mkg")
 
 [node name="Combo" type="Label" parent="NoteArea"]
@@ -72,3 +73,36 @@ layout_mode = 0
 offset_top = 70.0
 offset_right = 40.0
 offset_bottom = 93.0
+
+[node name="Menu" type="ColorRect" parent="."]
+process_mode = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.188235, 1, 1, 0.537255)
+script = ExtResource("3_oa3m8")
+
+[node name="Play" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.5
+offset_top = -15.5
+offset_right = 20.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[connection signal="pressed" from="Menu/Play" to="Menu" method="_on_play_pressed"]

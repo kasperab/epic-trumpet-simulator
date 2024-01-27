@@ -1,6 +1,6 @@
 extends Control
 
-var score = 0
+var score = 10
 var combo = 1
 
 func _input(event):
@@ -14,11 +14,17 @@ func _input(event):
 				change_score(-1)
 
 func change_score(points):
-	score += points * combo
-	$"../Score".text = str(score)
 	if points > 0:
+		score += points * combo
 		combo += 1
 		$"../Combo".text = "x" + str(combo)
 	else:
+		score += points
 		combo = 1
 		$"../Combo".text = ""
+	$"../Score".text = str(score)
+	if score <= 0:
+		score = 10
+		$"../Score".text = str(score)
+		$"../../Menu".show_menu()
+		$"../Notes".reset()
