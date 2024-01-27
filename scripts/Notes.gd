@@ -18,5 +18,6 @@ func _process(delta):
 		var y = child.position.y + speed * delta
 		if y >= remove:
 			child.queue_free()
+			$"../Goal".change_score(-1)
 		else:
 			child.position = Vector2(child.position.x, y)
