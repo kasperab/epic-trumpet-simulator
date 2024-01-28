@@ -20,7 +20,7 @@ albedo_texture = ExtResource("1_7geju")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y01bh"]
 albedo_color = Color(0.756863, 0.854902, 0.964706, 0)
 albedo_texture = ExtResource("1_7geju")
-roughness = 0.2
+roughness = 0.04
 
 [sub_resource type="SphereMesh" id="SphereMesh_bjfqn"]
 
@@ -29,6 +29,9 @@ albedo_color = Color(1, 0.698039, 0.27451, 1)
 emission_enabled = true
 emission = Color(0.662745, 0.392157, 0, 1)
 emission_energy_multiplier = 2.42
+rim_enabled = true
+rim = 0.44
+rim_tint = 0.62
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("mainCamera")]
 script = ExtResource("1_ridm5")
@@ -46,62 +49,62 @@ mesh = SubResource("QuadMesh_me6rv")
 surface_material_override/0 = SubResource("StandardMaterial3D_gkpra")
 
 [node name="Podium" type="MeshInstance3D" parent="."]
-transform = Transform3D(9.87939, 0, 0, 0, 1.40364, 0, 0, 0, 8.42205, 0.029, -1.38906, -3.03677)
+transform = Transform3D(-10.7499, 0, -1.22223, 0, 1.40364, 0, 0.959023, 0, -13.7002, 0.288651, -1.38502, -0.495423)
 mesh = SubResource("CylinderMesh_45m26")
 skeleton = NodePath("../Camera3D")
 surface_material_override/0 = SubResource("StandardMaterial3D_y01bh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.054141, 0.479235, 1.18634, -0.102308)
+transform = Transform3D(-0.0390768, 0, 0.00375426, 0, 0.303565, 0, -0.00273541, 0, -0.0330199, -0.441006, 1.18346, 0.21752)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.054141, 0.412636, 1.18634, -0.26989)
+transform = Transform3D(-0.0390768, 0, 0.00375426, 0, 0.303565, 0, -0.00273541, 0, -0.0330199, -0.391904, 1.18346, 0.323977)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.054141, 0.508126, 1.18634, 0.0885886)
+transform = Transform3D(-0.0390768, 0, 0.00375426, 0, 0.303565, 0, -0.00273541, 0, -0.0330199, -0.454111, 1.18346, 0.0992505)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.0541411, 0.28275, 1.18634, -0.426852)
+transform = Transform3D(-0.0390768, 0, 0.00375427, 0, 0.303565, 0, -0.00273541, 0, -0.03302, -0.284362, 1.18346, 0.427996)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.0541411, 0.105836, 1.18634, -0.498831)
+transform = Transform3D(-0.0390768, 0, 0.00375427, 0, 0.303565, 0, -0.00273541, 0, -0.03302, -0.144461, 1.18346, 0.476839)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428561, 0, 0.000546167, 0, 0.303565, 0, -0.000432348, 0, 0.0541384, -0.0394487, 1.18634, -0.503444)
+transform = Transform3D(-0.0391048, 0, 0.0032561, 0, 0.303565, 0, -0.00247159, 0, -0.0330532, 0.00409733, 1.18346, 0.495272)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.0541411, -0.191532, 1.18634, -0.481935)
+transform = Transform3D(-0.0390768, 0, 0.00375427, 0, 0.303565, 0, -0.00273541, 0, -0.03302, 0.165304, 1.18346, 0.481766)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.0541411, -0.352509, 1.18634, -0.362926)
+transform = Transform3D(-0.0390768, 0, 0.00375427, 0, 0.303565, 0, -0.00273541, 0, -0.03302, 0.309123, 1.18346, 0.417794)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.0541411, -0.493237, 1.18634, 0.097046)
+transform = Transform3D(-0.0390768, 0, 0.00375427, 0, 0.303565, 0, -0.00273541, 0, -0.03302, 0.45395, 1.18346, 0.197901)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="Podium"]
-transform = Transform3D(0.0428583, 0, 0, 0, 0.303565, 0, 0, 0, 0.0541411, -0.472398, 1.20721, -0.167245)
+transform = Transform3D(-0.0390768, 0, 0.00375427, 0, 0.303565, 0, -0.00273541, 0, -0.03302, 0.42216, 1.20433, 0.317862)
 mesh = SubResource("SphereMesh_bjfqn")
 surface_material_override/0 = SubResource("StandardMaterial3D_sbpiu")
 
-[node name="main_character_legs" parent="." instance=ExtResource("6_j5cdq")]
+[node name="main_character" parent="." instance=ExtResource("6_j5cdq")]
 transform = Transform3D(0.715034, 0, -0.69909, 0, 1, 0, 0.69909, 0, 0.715034, 0.312777, 0.211494, -0.335572)
 
 [node name="synth_character" parent="." instance=ExtResource("8_j6wc6")]
@@ -115,6 +118,7 @@ transform = Transform3D(1, -3.71902e-16, 3.4802e-16, 3.4802e-16, 0.997801, 0.066
 fov = 60.0
 
 [node name="Crowd" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00373995, 0.00831175, -0.0127411)
 
 [node name="arm_left" parent="Crowd" instance=ExtResource("2_e3qoe")]
 transform = Transform3D(-0.922154, -0.363794, 0.131473, -0.170918, 0.688101, 0.705198, -0.347013, 0.62783, -0.696715, 0.553295, -0.569321, 1.50119)
