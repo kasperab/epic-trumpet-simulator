@@ -12,7 +12,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.486275, 0.486275, 0.486275, 0, 1, 1, 1, 
 gradient = SubResource("Gradient_06cwx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpq2m"]
-size = Vector2(64, 100)
+size = Vector2(64, 300)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2irie"]
 particle_flag_disable_z = true

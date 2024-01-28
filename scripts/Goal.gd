@@ -44,7 +44,7 @@ func _input(event):
 					var note = area.get_parent()
 					var startY = note.position.y + note.size.y * note.scale.y
 					
-					if(playing[index] != note and startY > lastStartY):
+					if(playing[index] != note and !note.scored and startY > lastStartY):
 						lastStartY = startY
 						lastNote = note
 					
@@ -74,6 +74,9 @@ func _input(event):
 						stageManager.on_note_end()
 					else:
 						child.get_node("Particles").emitting = true
+				else:
+					lastNote.scored = true
+					miss()
 
 		elif event.is_action_released(child.name) and playing[index] and not playing[index].scored:
 			if playing[index].position.y >= position.y:
