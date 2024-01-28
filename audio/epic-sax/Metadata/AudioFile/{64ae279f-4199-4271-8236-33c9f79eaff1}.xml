@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{64ae279f-4199-4271-8236-33c9f79eaff1}">
+		<property name="assetPath">
+			<value>trumpet1-44700-50-0.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.25</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0acaf919-0ec3-486f-82c3-9b969aea1be2}</destination>
+		</relationship>
+	</object>
+</objects>

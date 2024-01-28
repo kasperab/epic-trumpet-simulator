@@ -43,6 +43,7 @@ expand_mode = 1
 
 [node name="TextureRectClick" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 50.0
 offset_right = 51.0
 offset_bottom = 50.0

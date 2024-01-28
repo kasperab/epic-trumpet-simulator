@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dokitaxatv510"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/trumpet1/trumpet1-41325-25-4"
+guid = "{0fbbb3fa-7a05-43f6-abd8-b9b4b9907fb0}"
+name = "trumpet1-41325-25-4"

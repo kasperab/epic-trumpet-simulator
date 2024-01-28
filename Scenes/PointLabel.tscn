@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccc1gda8rtxtv"]
 
 [ext_resource type="Script" path="res://scripts/PointLabel.gd" id="1_nwvjh"]
-[ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="1_tkruj"]
+[ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="1_ojvgw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_155t7"]
-font = ExtResource("1_tkruj")
+font = ExtResource("1_ojvgw")
 font_size = 64
 
 [node name="PointLabel" type="Control"]
@@ -20,5 +20,6 @@ layout_mode = 0
 offset_top = -2.0
 offset_right = 40.0
 offset_bottom = 21.0
+text = "100"
 label_settings = SubResource("LabelSettings_155t7")
 script = ExtResource("1_nwvjh")
