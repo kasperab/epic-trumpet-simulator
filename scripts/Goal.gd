@@ -44,7 +44,7 @@ func _input(event):
 					var note = area.get_parent()
 					var startY = note.position.y + note.size.y * note.scale.y
 					
-					if(startY > lastStartY):
+					if(playing[index] != note and startY > lastStartY):
 						lastStartY = startY
 						lastNote = note
 					
