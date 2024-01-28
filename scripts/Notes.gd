@@ -6,6 +6,7 @@ class_name Notes
 @export var spawn : float
 @export var remove : float
 @export var speed : float
+@export var holdThreshold : float = 0.1
 var note = preload("res://Scenes/Note.tscn")
 var timer = 0
 var x_positions : Array[float]
@@ -37,6 +38,9 @@ func spawnNote(eventAsset, number = 0, duration = 1):
 			x_positions.append(goal.position.x)
 	var new_note = note.instantiate()
 	new_note.eventToPlay = eventAsset
+	
+	if duration < holdThreshold:
+		new_note.set_click()
 	
 	var length = duration * speed
 	new_note.position = Vector2(x_positions[number], spawn - new_note.size.y * length)

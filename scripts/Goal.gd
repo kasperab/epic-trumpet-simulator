@@ -55,21 +55,29 @@ func _input(event):
 					
 					playing[index] = lastNote
 					var eventAsset : EventAsset = lastNote.eventToPlay
-					if(eventAsset):
+					if eventAsset:
 						FMODRuntime.play_one_shot(eventAsset)
-					child.get_node("Particles").emitting = true
+						
+					lastNote.on_click()
+					
+					if lastNote.isClick:
+						change_score(lastNote.points)
+						lastNote.on_score()
+					else:
+						child.get_node("Particles").emitting = true
 					correct_press = true
 
 			if not correct_press:
 				miss()
-		elif event.is_action_released(child.name) and playing[index]:
+		elif event.is_action_released(child.name) and playing[index] and not playing[index].scored:
 			if playing[index].position.y >= position.y:
 				change_score(playing[index].points)
 			else:
 				miss()
 			
-			playing[index].scored = true
+			playing[index].on_score()
 			child.get_node("Particles").emitting = false
+				
 		index += 1
 		
 func miss():
@@ -119,6 +127,7 @@ func _on_area_2d_area_exited(area):
 		if(!playing[index].scored):
 			var points = playing[index].points
 			change_score(points)
+			playing[index].on_score()
 			get_children()[index].get_node("Particles").emitting = false
 		
 		playing[index] = null

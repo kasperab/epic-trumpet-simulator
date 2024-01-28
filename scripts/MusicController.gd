@@ -87,12 +87,12 @@ func _ready():
 	reset()
 	
 func start():
+	beatCounter = -1
+	currentSequence = sequenceData.duplicate()
 	playbackInstance.start()
 	
 func reset():
-	currentSequence = sequenceData.duplicate()
 	playbackInstance.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
-	beatCounter = -1
 
 func _process(delta):
 	time += delta
