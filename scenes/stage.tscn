@@ -40,6 +40,11 @@ transform = Transform3D(49.6037, 0, 0, 0, 30, 0, 0, 0, 30, -0.00525856, 14.195, 
 mesh = SubResource("QuadMesh_me6rv")
 surface_material_override/0 = SubResource("StandardMaterial3D_gkpra")
 
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(49.6037, -2.09272e-14, -4.57379e-22, -7.56256e-22, -1.31134e-06, 30, -3.46022e-14, -30, -1.31134e-06, -0.00525856, -0.308976, -14.3608)
+mesh = SubResource("QuadMesh_me6rv")
+surface_material_override/0 = SubResource("StandardMaterial3D_gkpra")
+
 [node name="Podium" type="MeshInstance3D" parent="."]
 transform = Transform3D(9.87939, 0, 0, 0, 1.40364, 0, 0, 0, 8.42205, 0.029, -1.38906, -3.03677)
 mesh = SubResource("CylinderMesh_45m26")
