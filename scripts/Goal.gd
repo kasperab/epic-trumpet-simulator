@@ -156,4 +156,5 @@ func _on_area_2d_area_exited(area):
 func set_difficulty(preset : DifficultyPreset):
 	difficultyPreset = preset
 	$"../Notes".speed = difficultyPreset.speed
+	musicController.useTrackCount = difficultyPreset.numTracks
 	musicController.update_fall_duration()

@@ -7,3 +7,4 @@ script = ExtResource("1_2rdv0")
 speed = 200.0
 accuracyThresholds = Array[int]([80, 40, 15])
 accuracyPoints = Array[int]([50, 100, 150])
+numTracks = 3
