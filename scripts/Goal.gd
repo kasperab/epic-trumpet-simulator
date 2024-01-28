@@ -101,6 +101,7 @@ func update_ui():
 
 func start_game():
 	score = 0
+	combo = 1
 	musicController.start()
 	inGame = true
 
