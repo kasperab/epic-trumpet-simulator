@@ -1,13 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=20 format=3 uid="uid://c8xcjh82hcbmu"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
 [ext_resource type="EventAsset" uid="uid://ckmt27mp6wxjm" path="res://addons/FMOD/editor/resources/events/{152884d2-f0ba-4a2f-9bae-a62d4cd4f317}.tres" id="2_75wps"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="2_icjoi"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
-[ext_resource type="PackedScene" uid="uid://bf5qr1vk4g7hq" path="res://scenes/NoteGoal.tscn" id="5_1jy35"]
+[ext_resource type="PackedScene" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
 [ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="5_5ujik"]
-[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://scenes/stage.tscn" id="6_brsos"]
+[ext_resource type="PackedScene" path="res://Scenes/stage.tscn" id="6_brsos"]
 [ext_resource type="Texture2D" uid="uid://bjyvbap18f4k7" path="res://images/tile_64.png" id="7_hvc83"]
 [ext_resource type="Resource" uid="uid://ctgloen2cawck" path="res://difficulty_options/Easy.tres" id="8_5drj2"]
 [ext_resource type="Resource" uid="uid://dqborryelr6hw" path="res://difficulty_options/Medium.tres" id="9_6ybpf"]
@@ -191,10 +191,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -372.0
-offset_top = -55.5
-offset_right = -175.0
-offset_bottom = 55.5
+offset_left = -386.0
+offset_top = 63.5
+offset_right = -165.0
+offset_bottom = 198.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -220,10 +220,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -57.0
-offset_right = 160.0
-offset_bottom = 54.0
+offset_left = -144.0
+offset_top = 62.0
+offset_right = 170.0
+offset_bottom = 197.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -242,14 +242,16 @@ theme_override_styles/focus = ExtResource("13_c683f")
 text = "Medium"
 
 [node name="Victory" type="Label" parent="Menu"]
-visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 209.0
+offset_left = -17.0
+offset_top = 405.0
+offset_right = -17.0
+offset_bottom = 614.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_5ujik")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 96
 text = "Victory!"
 horizontal_alignment = 1
 
@@ -261,10 +263,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 196.0
-offset_top = -55.0
+offset_left = 192.0
+offset_top = 64.0
 offset_right = 381.0
-offset_bottom = 56.0
+offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)

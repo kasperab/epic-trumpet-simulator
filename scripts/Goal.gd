@@ -61,9 +61,11 @@ func _input(event):
 					lastNote.points = difficultyPreset.accuracyPoints[accuracyIndex]
 					
 					playing[index] = lastNote
-					var eventAsset : EventAsset = lastNote.eventToPlay
+					var eventAsset : EventDescription = lastNote.eventToPlay
 					if eventAsset:
-						FMODRuntime.play_one_shot(eventAsset)
+						var playbackInstance = eventAsset.create_instance()
+						playbackInstance.start()
+						playbackInstance.release()
 						
 					lastNote.on_click()
 					stageManager.on_note_start()

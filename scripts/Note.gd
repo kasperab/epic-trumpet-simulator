@@ -7,7 +7,7 @@ extends Control
 @export var fadeInDuration = 0.5
 
 var isClick : bool = false
-var eventToPlay : EventAsset
+var eventToPlay : EventDescription
 var points : float
 var scored : bool = false
 

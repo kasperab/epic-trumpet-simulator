@@ -5,7 +5,7 @@ class_name MusicController
 var callable: Callable = Callable(self, "beat_callback")
 
 class NoteData:
-	var soundEvent : EventAsset
+	var soundEvent : EventDescription
 	var beatPos : float
 	var duration : float
 	var note : int
@@ -64,12 +64,14 @@ func _enter_tree():
 	var sequenceEventPrefix = "event:/" + sequenceName + "/"
 	
 	for event in eventList:
-		var eventAsset : FMODAsset = ResourceLoader.load(eventPath + "/" + event)
-		if(eventAsset.path.begins_with(sequenceEventPrefix)):
-			var eventName = eventAsset.path.replace(sequenceEventPrefix, "")
+		var eventUID = event.get_slice(".", 0)
+		var eventDescription : EventDescription = FMODRuntime.get_event_description_id(eventUID)
+		if(eventDescription.get_path().begins_with(sequenceEventPrefix)):
+			var eventName = eventDescription.get_path().replace(sequenceEventPrefix, "")
 			var metaData = eventName.split("-")
 			var note = NoteData.new()
-			note.soundEvent = eventAsset
+			
+			note.soundEvent = eventDescription
 			note.beatPos = float(metaData[1]) / 100
 			note.duration = float(metaData[2]) / 100
 			note.note = int(metaData[3])
