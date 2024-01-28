@@ -5,7 +5,7 @@
 [ext_resource type="EventAsset" uid="uid://ckmt27mp6wxjm" path="res://addons/FMOD/editor/resources/events/{152884d2-f0ba-4a2f-9bae-a62d4cd4f317}.tres" id="2_75wps"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="2_icjoi"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
-[ext_resource type="PackedScene" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
+[ext_resource type="PackedScene" uid="uid://cbqjsfr702rtf" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
 [ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="5_5ujik"]
 [ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://scenes/stage.tscn" id="6_brsos"]
 [ext_resource type="Resource" uid="uid://ctgloen2cawck" path="res://difficulty_options/Easy.tres" id="8_5drj2"]
@@ -137,18 +137,12 @@ texture_progress = SubResource("NoiseTexture2D_p6ipb")
 
 [node name="Menu" type="ColorRect" parent="." node_paths=PackedStringArray("goal")]
 process_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -250.0
-offset_right = 500.0
-offset_bottom = 250.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.188235, 1, 1, 0.537255)
+color = Color(0, 0.00784314, 0.145098, 0.627451)
 script = ExtResource("3_oa3m8")
 goal = NodePath("../NoteArea/Goal")
 easyPreset = ExtResource("8_5drj2")
