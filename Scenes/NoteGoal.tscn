@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbqjsfr702rtf"]
+[gd_scene load_steps=9 format=3 uid="uid://bf5qr1vk4g7hq"]
 
 [ext_resource type="Script" path="res://scripts/SingleNoteGoal.gd" id="1_0c6wj"]
+[ext_resource type="Texture2D" uid="uid://bjyvbap18f4k7" path="res://images/tile_64.png" id="2_vnx61"]
+[ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="3_yhenj"]
 
 [sub_resource type="Gradient" id="Gradient_06cwx"]
 offsets = PackedFloat32Array(0, 0.487097, 1)
@@ -10,7 +12,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0.486275, 0.486275, 0.486275, 0, 1, 1, 1, 
 gradient = SubResource("Gradient_06cwx")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpq2m"]
-size = Vector2(50, 100)
+size = Vector2(64, 100)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2irie"]
 particle_flag_disable_z = true
@@ -27,7 +29,7 @@ width = 10
 height = 10
 
 [node name="Note1" type="NinePatchRect"]
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(64, 0)
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -41,7 +43,7 @@ script = ExtResource("1_0c6wj")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(25, 5.5)
+position = Vector2(32, 5.5)
 shape = SubResource("RectangleShape2D_gpq2m")
 
 [node name="Particles" type="GPUParticles2D" parent="."]
@@ -51,5 +53,37 @@ amount = 10
 process_material = SubResource("ParticleProcessMaterial_2irie")
 texture = SubResource("NoiseTexture2D_mpx5f")
 lifetime = 0.2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0.364706, 0.662745, 0.921569, 1)
+layout_mode = 0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 80.0
+texture = ExtResource("2_vnx61")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.5
+offset_right = 20.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_yhenj")
+theme_override_font_sizes/font_size = 32
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_exited" from="Area2D" to="." method="trigger_area_exit"]

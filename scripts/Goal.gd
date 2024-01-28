@@ -18,8 +18,11 @@ var pointPopUp = preload("res://Scenes/PointLabel.tscn")
 func _ready():
 	score = 0
 	update_ui()
-	for _child in get_children():
+	var num = 1
+	for child in get_children():
 		playing.append(null)
+		child.get_node("NinePatchRect/Label").text = str(num)
+		num += 1
 
 func _process(_delta):
 	if ($"../Notes".get_child_count() == 0 && musicController.is_sequence_empty() && inGame):
@@ -114,13 +117,13 @@ func update_ui():
 func start_game():
 	score = 0
 	combo = 1
+	health.value = health.max_value
 	musicController.start()
 	inGame = true
 	update_ui()
 	$"../../Stage/CharacterControl".start()
 
 func finish_game(victory):
-	health.value = health.max_value
 	update_ui()
 	$"../Notes".reset()
 	$"../../Menu".show_menu(victory)

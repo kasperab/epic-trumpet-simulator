@@ -1,17 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=17 format=3 uid="uid://cmxcn2iqij3b0"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
 [ext_resource type="EventAsset" uid="uid://ckmt27mp6wxjm" path="res://addons/FMOD/editor/resources/events/{152884d2-f0ba-4a2f-9bae-a62d4cd4f317}.tres" id="2_75wps"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="2_icjoi"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
-[ext_resource type="PackedScene" uid="uid://cbqjsfr702rtf" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
+[ext_resource type="PackedScene" uid="uid://bf5qr1vk4g7hq" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
 [ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="5_5ujik"]
-[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://Scenes/stage.tscn" id="6_brsos"]
+[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://scenes/stage.tscn" id="6_brsos"]
+[ext_resource type="Texture2D" uid="uid://bjyvbap18f4k7" path="res://images/tile_64.png" id="7_hvc83"]
 [ext_resource type="Resource" uid="uid://ctgloen2cawck" path="res://difficulty_options/Easy.tres" id="8_5drj2"]
 [ext_resource type="Resource" uid="uid://dqborryelr6hw" path="res://difficulty_options/Medium.tres" id="9_6ybpf"]
 [ext_resource type="Script" path="res://scripts/CharacterControl.gd" id="9_41b2l"]
 [ext_resource type="Resource" uid="uid://dnuw6jowmhd1u" path="res://difficulty_options/Epic.tres" id="10_4kapv"]
+[ext_resource type="StyleBox" uid="uid://crv8gayg5b5fh" path="res://ui/button.tres" id="12_3b2n2"]
+[ext_resource type="StyleBox" uid="uid://dqj6cjqr1q6q5" path="res://ui/button_hover.tres" id="13_c683f"]
 
 [sub_resource type="EventAsset" id="EventAsset_wtgv6"]
 is_oneshot = true
@@ -20,9 +23,6 @@ max_distance = 20.0
 path = "event:/Trumpet"
 guid = "{ac034382-c8ad-410a-82a2-b8a381f53de0}"
 name = "Trumpet"
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p6ipb"]
-height = 50
 
 [node name="Main" type="Node3D"]
 
@@ -124,17 +124,25 @@ theme_override_font_sizes/font_size = 64
 text = "x"
 
 [node name="Health" type="TextureProgressBar" parent="NoteArea"]
+modulate = Color(0.831373, 0.00784314, 0.411765, 1)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -576.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = 128.0
 grow_horizontal = 0
 max_value = 10.0
 value = 10.0
 fill_mode = 1
-texture_progress = SubResource("NoiseTexture2D_p6ipb")
+nine_patch_stretch = true
+stretch_margin_left = 16
+stretch_margin_top = 16
+stretch_margin_right = 16
+stretch_margin_bottom = 16
+texture_progress = ExtResource("7_hvc83")
 
 [node name="Menu" type="ColorRect" parent="." node_paths=PackedStringArray("goal")]
 process_mode = 3
@@ -151,6 +159,7 @@ mediumPreset = ExtResource("9_6ybpf")
 epicPreset = ExtResource("10_4kapv")
 
 [node name="PlayEasy" type="Button" parent="Menu"]
+modulate = Color(0.105882, 0.745098, 0.894118, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -163,11 +172,23 @@ offset_right = -175.0
 offset_bottom = 55.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_5ujik")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("12_3b2n2")
+theme_override_styles/hover = ExtResource("13_c683f")
+theme_override_styles/pressed = ExtResource("13_c683f")
+theme_override_styles/disabled = ExtResource("12_3b2n2")
+theme_override_styles/focus = ExtResource("13_c683f")
 text = "Easy"
 
 [node name="Play" type="Button" parent="Menu"]
+modulate = Color(0.913725, 0.760784, 0.235294, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -180,8 +201,19 @@ offset_right = 160.0
 offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_5ujik")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("12_3b2n2")
+theme_override_styles/hover = ExtResource("13_c683f")
+theme_override_styles/pressed = ExtResource("13_c683f")
+theme_override_styles/disabled = ExtResource("12_3b2n2")
+theme_override_styles/focus = ExtResource("13_c683f")
 text = "Medium"
 
 [node name="Victory" type="Label" parent="Menu"]
@@ -197,6 +229,7 @@ text = "Victory!"
 horizontal_alignment = 1
 
 [node name="PlayEpic" type="Button" parent="Menu"]
+modulate = Color(0.811765, 0.211765, 0.858824, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -209,8 +242,19 @@ offset_right = 381.0
 offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_5ujik")
 theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = ExtResource("12_3b2n2")
+theme_override_styles/hover = ExtResource("13_c683f")
+theme_override_styles/pressed = ExtResource("13_c683f")
+theme_override_styles/disabled = ExtResource("12_3b2n2")
+theme_override_styles/focus = ExtResource("13_c683f")
 text = "Epic"
 
 [node name="Stage" parent="." instance=ExtResource("6_brsos")]
