@@ -54,6 +54,7 @@ func _process(delta):
 			scaleTime -= delta
 			if(scaleTime <= 0):
 				scaleTime = 0
+				scaleDown = false
 				
 		var currentScale = 1 + (scaleAmount - 1) * (scaleTime / scaleDuration)
 		trumpet.scale = Vector3(1, 1, currentScale)

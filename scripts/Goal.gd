@@ -5,6 +5,9 @@ class_name Goal
 @export var musicController : MusicController
 @export var stageManager : StageManager
 
+@export var victorySound : EventAsset
+@export var loseSound : EventAsset
+
 @onready var health = $"../Health"
 
 var difficultyPreset : DifficultyPreset
@@ -124,6 +127,12 @@ func start_game():
 	$"../../Stage/CharacterControl".start()
 
 func finish_game(victory):
+	if victory:
+		FMODRuntime.play_one_shot(victorySound)
+	else:
+		FMODRuntime.play_one_shot(loseSound)
+	
+	health.value = health.max_value
 	update_ui()
 	$"../Notes".reset()
 	$"../../Menu".show_menu(victory)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=19 format=3 uid="uid://cmxcn2iqij3b0"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
@@ -23,6 +23,22 @@ max_distance = 20.0
 path = "event:/Trumpet"
 guid = "{ac034382-c8ad-410a-82a2-b8a381f53de0}"
 name = "Trumpet"
+
+[sub_resource type="EventAsset" id="EventAsset_aomuk"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/You Win"
+guid = "{84b02ffc-c780-40cf-ba31-d023e40f35c7}"
+name = "You Win"
+
+[sub_resource type="EventAsset" id="EventAsset_n2w7e"]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/You Lose"
+guid = "{e4d8aa4e-be05-4ffc-bcb9-27b00f73e0f2}"
+name = "You Lose"
 
 [node name="Main" type="Node3D"]
 
@@ -84,6 +100,8 @@ alignment = 1
 script = ExtResource("2_icjoi")
 musicController = NodePath("../../MusicController")
 stageManager = NodePath("../../Stage")
+victorySound = SubResource("EventAsset_aomuk")
+loseSound = SubResource("EventAsset_n2w7e")
 
 [node name="Note1" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
