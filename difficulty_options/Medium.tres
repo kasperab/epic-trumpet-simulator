@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_b1l05")
 speed = 400.0
-accuracyThresholds = Array[int]([50, 20, 10])
+accuracyThresholds = Array[int]([60, 20, 10])
 accuracyPoints = Array[int]([100, 200, 300])

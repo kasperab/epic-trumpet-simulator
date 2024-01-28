@@ -74,10 +74,7 @@ func _input(event):
 						stageManager.on_note_end()
 					else:
 						child.get_node("Particles").emitting = true
-					correct_press = true
 
-			if not correct_press:
-				miss()
 		elif event.is_action_released(child.name) and playing[index] and not playing[index].scored:
 			if playing[index].position.y >= position.y:
 				change_score(playing[index].points)
