@@ -18,7 +18,7 @@ var beatCounter: int = -1
 @export var tempo: float = 130
 
 @export var sequenceName = "test"
-@export var noteMapping : Array[int] = [2, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 1]
+@export var noteMapping : Array[int] = [2, 0, 3, 3, 4, 0, 0, 5, 5, 0, 0, 1]
 
 var sequenceData: Array[NoteData]
 var currentSequence: Array[NoteData]
