@@ -112,6 +112,7 @@ func start_game():
 	musicController.start()
 	inGame = true
 	update_ui()
+	$"../../Stage/CharacterControl".start()
 
 func finish_game(victory):
 	health.value = health.max_value
@@ -120,6 +121,7 @@ func finish_game(victory):
 	$"../../Menu".show_menu(victory)
 	musicController.reset()
 	inGame = false
+	$"../../Stage/CharacterControl".stop()
 
 func _on_area_2d_area_exited(area):
 	if playing.has(area.get_parent()):
