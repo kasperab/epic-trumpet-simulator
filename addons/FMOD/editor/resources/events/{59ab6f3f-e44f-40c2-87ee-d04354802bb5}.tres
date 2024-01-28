@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://be8u3len6viam"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/trumpet2/trumpet2-28450-50-0"
+guid = "{59ab6f3f-e44f-40c2-87ee-d04354802bb5}"
+name = "trumpet2-28450-50-0"
