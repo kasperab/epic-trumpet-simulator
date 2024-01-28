@@ -1,6 +1,6 @@
 extends Node
 
-@onready var main = $"../../Stage/main_character_legs/AnimationPlayer"
+@onready var main = $"../../Stage/main_character/AnimationPlayer"
 @onready var synth = $"../../Stage/synth_character"
 @onready var synth_end = synth.position.x
 @onready var synth_start = synth_end - 10
