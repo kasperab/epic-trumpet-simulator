@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_ulti7")
 speed = 700.0
-accuracyThresholds = Array[int]([40, 30, 15])
+accuracyThresholds = Array[int]([40, 25, 15])
 accuracyPoints = Array[int]([100, 300, 600])
 numTracks = 6

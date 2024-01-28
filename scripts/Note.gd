@@ -1,7 +1,12 @@
 extends Control
 
+@export var container : Control
 @export var clickRect : Control
 @export var holdRect : Control
+
+@export var labelMiss : Label
+@export var labelLowAccuracy : Label
+
 @export var scaleModifier = 0.2
 @export var duration = 0.05
 @export var fadeInDuration = 0.5
@@ -9,6 +14,10 @@ extends Control
 var isClick : bool = false
 var eventToPlay : EventDescription
 var points : float
+
+var isMiss : bool = true
+var isPerfect : bool = false
+
 var hit : bool = false
 var scored : bool = false
 
@@ -33,10 +42,8 @@ func _process(delta):
 		modulate.a = fadeIn / fadeInDuration
 		
 	if scaleUp:
-		time += delta
-		if time >= duration:
-			time = duration
-			scaleUp = false
+		time = duration
+		scaleUp = false
 	elif scaleDown:
 		time -= delta
 		if time <= 0:
@@ -60,3 +67,14 @@ func on_click():
 func on_score():
 	scored = true
 	scaleDown = true
+	
+	if isMiss:
+		labelMiss.show()
+	elif !isPerfect:
+		labelLowAccuracy.show()
+	
+func get_length():
+	return container.size.y * container.scale.y
+	
+func set_length(length):
+	container.scale.y = length

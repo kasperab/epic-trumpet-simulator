@@ -41,8 +41,8 @@ func _input(event):
 			
 			if child.get_node("Area2D").has_overlapping_areas():
 				for area in child.get_node("Area2D").get_overlapping_areas():
-					var note = area.get_parent()
-					var startY = note.position.y + note.size.y * note.scale.y
+					var note = area.get_parent().get_parent()
+					var startY = note.position.y + note.get_length()
 					
 					if(playing[index] != note and !note.hit and startY > lastStartY):
 						lastStartY = startY
@@ -58,6 +58,11 @@ func _input(event):
 						break
 					accuracyIndex += 1
 				
+				lastNote.isMiss = accuracyIndex == -1
+				lastNote.isPerfect = accuracyIndex == (difficultyPreset.accuracyThresholds.size() - 1)
+				
+				lastNote.on_click()
+				
 				if accuracyIndex > -1:
 					lastNote.points = difficultyPreset.accuracyPoints[accuracyIndex]
 					
@@ -68,7 +73,6 @@ func _input(event):
 						playbackInstance.start()
 						playbackInstance.release()
 						
-					lastNote.on_click()
 					stageManager.on_note_start()
 					
 					if lastNote.isClick:
@@ -78,13 +82,14 @@ func _input(event):
 					else:
 						child.get_node("Particles").emitting = true
 				else:
-					lastNote.scored = true
+					lastNote.on_score()
 					miss()
 
 		elif event.is_action_released(child.name) and playing[index] and not playing[index].scored:
 			if playing[index].position.y >= position.y:
 				change_score(playing[index].points)
 			else:
+				playing[index].isMiss = true
 				miss()
 			
 			playing[index].on_score()
@@ -144,8 +149,10 @@ func finish_game(victory):
 	$"../../Stage/CharacterControl".stop()
 
 func _on_area_2d_area_exited(area):
-	if playing.has(area.get_parent()):
-		var index = playing.find(area.get_parent()) 
+	var note = area.get_parent().get_parent()
+	
+	if playing.has(note):
+		var index = playing.find(note) 
 		if(!playing[index].scored):
 			var points = playing[index].points
 			change_score(points)
@@ -154,10 +161,10 @@ func _on_area_2d_area_exited(area):
 			get_children()[index].get_node("Particles").emitting = false
 		
 		playing[index] = null
-	elif !area.get_parent().hit:
+	elif !note.hit:
 		miss()
 		
-	area.get_parent().queue_free()
+	note.queue_free()
 	
 func set_difficulty(preset : DifficultyPreset):
 	difficultyPreset = preset
