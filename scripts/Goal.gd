@@ -112,6 +112,7 @@ func start_game():
 	combo = 1
 	musicController.start()
 	inGame = true
+	update_ui()
 
 func finish_game(victory):
 	health.value = health.max_value
