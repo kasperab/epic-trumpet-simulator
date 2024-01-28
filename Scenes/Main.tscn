@@ -1,13 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=20 format=3 uid="uid://cmxcn2iqij3b0"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
 [ext_resource type="EventAsset" uid="uid://ckmt27mp6wxjm" path="res://addons/FMOD/editor/resources/events/{152884d2-f0ba-4a2f-9bae-a62d4cd4f317}.tres" id="2_75wps"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="2_icjoi"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
-[ext_resource type="PackedScene" uid="uid://bf5qr1vk4g7hq" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
+[ext_resource type="PackedScene" uid="uid://bf5qr1vk4g7hq" path="res://scenes/NoteGoal.tscn" id="5_1jy35"]
 [ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="5_5ujik"]
-[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://Scenes/stage.tscn" id="6_brsos"]
+[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://scenes/stage.tscn" id="6_brsos"]
 [ext_resource type="Texture2D" uid="uid://bjyvbap18f4k7" path="res://images/tile_64.png" id="7_hvc83"]
 [ext_resource type="Resource" uid="uid://ctgloen2cawck" path="res://difficulty_options/Easy.tres" id="8_5drj2"]
 [ext_resource type="Resource" uid="uid://dqborryelr6hw" path="res://difficulty_options/Medium.tres" id="9_6ybpf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://dnuw6jowmhd1u" path="res://difficulty_options/Epic.tres" id="10_4kapv"]
 [ext_resource type="StyleBox" uid="uid://crv8gayg5b5fh" path="res://ui/button.tres" id="12_3b2n2"]
 [ext_resource type="StyleBox" uid="uid://dqj6cjqr1q6q5" path="res://ui/button_hover.tres" id="13_c683f"]
+[ext_resource type="Texture2D" uid="uid://cdff822440kw0" path="res://images/Epic_Trumpet_Text.png" id="14_ips4x"]
 
 [sub_resource type="EventAsset" id="EventAsset_wtgv6"]
 is_oneshot = true
@@ -175,6 +176,12 @@ goal = NodePath("../NoteArea/Goal")
 easyPreset = ExtResource("8_5drj2")
 mediumPreset = ExtResource("9_6ybpf")
 epicPreset = ExtResource("10_4kapv")
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("14_ips4x")
 
 [node name="PlayEasy" type="Button" parent="Menu"]
 modulate = Color(0.105882, 0.745098, 0.894118, 1)
