@@ -5,9 +5,9 @@
 [ext_resource type="EventAsset" uid="uid://ck7tc8b035e75" path="res://addons/FMOD/editor/resources/events/{a5f01dd1-e654-4708-b113-3b151f94a45b}.tres" id="2_chxoo"]
 [ext_resource type="Script" path="res://scripts/Goal.gd" id="2_icjoi"]
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
-[ext_resource type="PackedScene" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
+[ext_resource type="PackedScene" uid="uid://cbqjsfr702rtf" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
 [ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="5_5ujik"]
-[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://scenes/stage.tscn" id="6_brsos"]
+[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://Scenes/stage.tscn" id="6_brsos"]
 
 [sub_resource type="EventAsset" id="EventAsset_wtgv6"]
 is_oneshot = true
@@ -70,6 +70,8 @@ theme_override_constants/separation = 200
 alignment = 1
 script = ExtResource("2_icjoi")
 musicController = NodePath("../../MusicController")
+accuracyThresholds = Array[int]([40, 20, 10])
+accuracyPoints = Array[int]([100, 200, 300])
 
 [node name="Note1" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
@@ -170,6 +172,7 @@ horizontal_alignment = 1
 
 [node name="Stage" parent="." instance=ExtResource("6_brsos")]
 
+[connection signal="on_beat" from="MusicController" to="Stage" method="trigger_beat"]
 [connection signal="area_exit" from="NoteArea/Goal/Note1" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="area_exit" from="NoteArea/Goal/Note2" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="area_exit" from="NoteArea/Goal/Note3" to="NoteArea/Goal" method="_on_area_2d_area_exited"]

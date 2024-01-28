@@ -91,7 +91,7 @@ func start():
 	
 func reset():
 	currentSequence = sequenceData.duplicate()
-	playbackInstance.stop(FMODStudioModule.FMOD_STUDIO_STOP_IMMEDIATE)
+	playbackInstance.stop(FMODStudioModule.FMOD_STUDIO_STOP_ALLOWFADEOUT)
 	beatCounter = -1
 
 func _process(delta):
