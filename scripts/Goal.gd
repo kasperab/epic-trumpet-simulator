@@ -3,6 +3,8 @@ extends HBoxContainer
 class_name Goal
 
 @export var musicController : MusicController
+@export var stageManager : StageManager
+
 @onready var health = $"../Health"
 
 var difficultyPreset : DifficultyPreset
@@ -58,10 +60,12 @@ func _input(event):
 						FMODRuntime.play_one_shot(eventAsset)
 						
 					lastNote.on_click()
+					stageManager.on_note_start()
 					
 					if lastNote.isClick:
 						change_score(lastNote.points)
 						lastNote.on_score()
+						stageManager.on_note_end()
 					else:
 						child.get_node("Particles").emitting = true
 					correct_press = true
@@ -75,6 +79,7 @@ func _input(event):
 				miss()
 			
 			playing[index].on_score()
+			stageManager.on_note_end()
 			child.get_node("Particles").emitting = false
 				
 		index += 1
@@ -130,6 +135,7 @@ func _on_area_2d_area_exited(area):
 			var points = playing[index].points
 			change_score(points)
 			playing[index].on_score()
+			stageManager.on_note_end()
 			get_children()[index].get_node("Particles").emitting = false
 		
 		playing[index] = null

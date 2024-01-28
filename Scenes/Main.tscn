@@ -69,7 +69,7 @@ offset_top = 977.0
 offset_right = 1919.0
 offset_bottom = 990.0
 
-[node name="Goal" type="HBoxContainer" parent="NoteArea" node_paths=PackedStringArray("musicController")]
+[node name="Goal" type="HBoxContainer" parent="NoteArea" node_paths=PackedStringArray("musicController", "stageManager")]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -83,6 +83,7 @@ theme_override_constants/separation = 200
 alignment = 1
 script = ExtResource("2_icjoi")
 musicController = NodePath("../../MusicController")
+stageManager = NodePath("../../Stage")
 
 [node name="Note1" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
