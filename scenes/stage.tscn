@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://6inb258mgxsu"]
+[gd_scene load_steps=16 format=3 uid="uid://cny4m78fmivul"]
 
 [ext_resource type="Texture2D" uid="uid://3b4vderapyl2" path="res://images/Eurovision_Background.png" id="1_7geju"]
 [ext_resource type="Script" path="res://Scenes/StageManager.gd" id="1_ridm5"]

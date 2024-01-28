@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf5qr1vk4g7hq"]
+[gd_scene load_steps=9 format=3 uid="uid://cfynxc7ibuav8"]
 
 [ext_resource type="Script" path="res://scripts/SingleNoteGoal.gd" id="1_0c6wj"]
 [ext_resource type="Texture2D" uid="uid://bjyvbap18f4k7" path="res://images/tile_64.png" id="2_vnx61"]

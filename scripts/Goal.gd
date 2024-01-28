@@ -44,11 +44,12 @@ func _input(event):
 					var note = area.get_parent()
 					var startY = note.position.y + note.size.y * note.scale.y
 					
-					if(playing[index] != note and !note.scored and startY > lastStartY):
+					if(playing[index] != note and !note.hit and startY > lastStartY):
 						lastStartY = startY
 						lastNote = note
 					
 			if lastNote:
+				lastNote.hit = true
 				var distToY = abs(lastStartY - position.y)
 				lastNote.points = 0
 				var accuracyIndex = -1
@@ -153,7 +154,7 @@ func _on_area_2d_area_exited(area):
 			get_children()[index].get_node("Particles").emitting = false
 		
 		playing[index] = null
-	else:
+	elif !area.get_parent().hit:
 		miss()
 		
 	area.get_parent().queue_free()

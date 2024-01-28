@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1nst1vfw3fs5"]
+[gd_scene load_steps=5 format=3 uid="uid://lrrwp14ty5hw"]
 
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_hjprs"]
 [ext_resource type="EventAsset" uid="uid://ck7tc8b035e75" path="res://addons/FMOD/editor/resources/events/{a5f01dd1-e654-4708-b113-3b151f94a45b}.tres" id="2_hg0ag"]

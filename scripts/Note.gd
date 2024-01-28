@@ -9,6 +9,7 @@ extends Control
 var isClick : bool = false
 var eventToPlay : EventDescription
 var points : float
+var hit : bool = false
 var scored : bool = false
 
 var baseScale : float
