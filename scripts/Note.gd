@@ -4,6 +4,7 @@ extends Control
 @export var holdRect : Control
 @export var scaleModifier = 0.2
 @export var duration = 0.05
+@export var fadeInDuration = 0.5
 
 var isClick : bool = false
 var eventToPlay : EventAsset
@@ -15,6 +16,7 @@ var scaleUp = false
 var scaleDown = false
 
 var time : float = 0
+var fadeIn : float = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +24,13 @@ func _ready():
 	pass # Replace with function body.
 	
 func _process(delta):
+	if fadeIn < fadeInDuration:
+		fadeIn += delta
+		if(fadeIn >= fadeInDuration):
+			fadeIn = fadeInDuration
+			
+		modulate.a = fadeIn / fadeInDuration
+		
 	if scaleUp:
 		time += delta
 		if time >= duration:
