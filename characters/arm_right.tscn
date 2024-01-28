@@ -39,6 +39,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_y88l4")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86d4h"]
+disable_ambient_light = true
 albedo_color = Color(0.105882, 0.152941, 0.203922, 1)
 
 [sub_resource type="Animation" id="Animation_xdi8y"]
@@ -64,6 +65,7 @@ _data = {
 
 [node name="arm_right" type="MeshInstance3D" parent="RootNode"]
 transform = Transform3D(1, 0, 0, 0, 0.999868, 0.0162459, 0, -0.0162459, 0.999868, 0, 0, 0)
+layers = 2
 mesh = SubResource("ArrayMesh_bovyn")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_86d4h")

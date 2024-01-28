@@ -39,6 +39,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ps8q7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnoj7"]
+disable_ambient_light = true
 albedo_color = Color(0.105882, 0.152941, 0.203922, 1)
 
 [sub_resource type="Animation" id="Animation_hp4mo"]
@@ -51,7 +52,7 @@ tracks/0/enabled = true
 tracks/0/path = NodePath("RootNode/arm_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.4, 1, -0.0838821, 0, 0, 0.996476, 0.9, 1, 0.00336957, 0, 0, 0.999994, 1.5, 1, -0.100496, 0, 0, 0.994937)
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.4, 1, -0.140512, 0, 0, 0.990079, 0.9, 1, 0.00336957, 0, 0, 0.999994)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c15jv"]
 _data = {
@@ -64,6 +65,7 @@ _data = {
 
 [node name="arm_left" type="MeshInstance3D" parent="RootNode"]
 transform = Transform3D(1, 0, 0, 0, 0.985564, 0.169302, 0, -0.169302, 0.985564, 0, 0, 0)
+layers = 2
 mesh = SubResource("ArrayMesh_ucb2r")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_tnoj7")

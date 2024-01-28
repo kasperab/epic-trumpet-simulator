@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://kg41a6yu1fft"]
+[gd_scene load_steps=10 format=3 uid="uid://kg41a6yu1fft"]
 
 [ext_resource type="PackedScene" uid="uid://3juqsbhgujuk" path="res://characters/main_character_legless.fbx" id="1_dmk6f"]
-[ext_resource type="PackedScene" uid="uid://dkow03xi3huvh" path="res://instruments/kazoo.fbx" id="2_5eako"]
 [ext_resource type="PackedScene" uid="uid://dqd6uk46opylc" path="res://instruments/trumpet_main.fbx" id="3_4uvdh"]
+[ext_resource type="PackedScene" uid="uid://61yo616vesr2" path="res://instruments/trumpet_main.tscn" id="3_v8dfl"]
+[ext_resource type="PackedScene" uid="uid://dxh3ii7y6cjbr" path="res://instruments/kazoo.tscn" id="4_5d800"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjrya"]
 resource_name = "main_character_legs"
@@ -82,13 +83,16 @@ mesh = SubResource("ArrayMesh_ya0og")
 skeleton = NodePath("")
 
 [node name="main_character_legless" parent="RootNode/main_character_legs" instance=ExtResource("1_dmk6f")]
-transform = Transform3D(0.998938, 0.0415492, -0.0199189, -0.0428102, 0.996785, -0.0677346, 0.0170405, 0.0685154, 0.997504, 0, -0.138894, 0)
+transform = Transform3D(0.998938, 0.0415492, -0.0199189, -0.0428102, 0.996785, -0.0677346, 0.0170405, 0.0685155, 0.997504, 0, -0.138894, 0)
 
-[node name="kazoo" parent="RootNode/main_character_legs/main_character_legless" instance=ExtResource("2_5eako")]
-visible = false
+[node name="trumpet_main" parent="RootNode/main_character_legs/main_character_legless" instance=ExtResource("3_v8dfl")]
 
 [node name="trumpet" parent="RootNode/main_character_legs/main_character_legless" instance=ExtResource("3_4uvdh")]
 transform = Transform3D(0.999486, -8.15747e-09, -6.95737e-09, 8.18925e-09, 0.995607, 1.54619e-08, 7.07842e-09, -1.56699e-08, 0.982393, 0, 0, 0)
+visible = false
+
+[node name="kazoo" parent="RootNode/main_character_legs/main_character_legless" instance=ExtResource("4_5d800")]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Default animation"
