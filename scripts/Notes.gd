@@ -44,5 +44,5 @@ func spawnNote(eventAsset, number = 0, duration = 1):
 	
 	var length = duration * speed
 	new_note.position = Vector2(x_positions[number], spawn - new_note.size.y * length)
-	new_note.scale = Vector2(1, length / 32)
+	new_note.scale = Vector2(1, length)
 	add_child(new_note)
