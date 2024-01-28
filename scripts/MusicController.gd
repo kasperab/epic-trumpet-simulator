@@ -32,7 +32,7 @@ var playbackInstance: EventInstance
 @export var durationQuanta : float = 1
 @export var durationAdjustment : float = -0.125
 
-signal on_beat
+signal on_beat(beatDuration : float)
 
 var noteFallBeatDuration : float
 
@@ -116,7 +116,7 @@ func beat_callback(args):
 		tempo = args.properties.tempo
 		beatCounter += 1
 		time = 0
-		call_deferred("emit_signal", "on_beat")
+		call_deferred("emit_signal", "on_beat", beat_to_time(1))
 	
 func time_to_beat(seconds):
 	var bps = tempo / 60

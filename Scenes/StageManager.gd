@@ -5,7 +5,8 @@ extends Node3D
 
 @export var fovModifier : float = -10
 var fov : float
-var progress = 0
+var progress : float = 0
+var timer : float = 0
 var trigger = true
 
 
@@ -17,6 +18,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if timer > 0:
+		timer -= delta
+		if timer <= 0:
+			timer = 0
+			trigger = true
+	
 	if trigger:
 		if progress < 1:
 			progress += delta * speed
@@ -31,5 +38,5 @@ func _process(delta):
 			
 	mainCamera.fov = fov + fovModifier * progress
 
-func trigger_beat():
-	trigger = true
+func trigger_beat(beatDuration : float):
+	timer = beatDuration - (1/speed)

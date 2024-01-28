@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/Menu.gd" id="3_oa3m8"]
 [ext_resource type="PackedScene" uid="uid://cbqjsfr702rtf" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
 [ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="5_5ujik"]
-[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://scenes/stage.tscn" id="6_brsos"]
+[ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://Scenes/stage.tscn" id="6_brsos"]
 [ext_resource type="Resource" uid="uid://ctgloen2cawck" path="res://difficulty_options/Easy.tres" id="8_5drj2"]
 [ext_resource type="Resource" uid="uid://dqborryelr6hw" path="res://difficulty_options/Medium.tres" id="9_6ybpf"]
 [ext_resource type="Script" path="res://scripts/CharacterControl.gd" id="9_41b2l"]
