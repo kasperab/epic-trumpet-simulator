@@ -5,8 +5,7 @@ class_name Goal
 @export var musicController : MusicController
 @onready var health = $"../Health"
 
-@export var accuracyThresholds : Array[int]
-@export var accuracyPoints : Array[int]
+var difficultyPreset : DifficultyPreset
 var score
 var combo = 1
 var playing : Array[Control]
@@ -45,13 +44,13 @@ func _input(event):
 				var distToY = abs(lastStartY - position.y)
 				lastNote.points = 0
 				var accuracyIndex = -1
-				for threshold in accuracyThresholds:
+				for threshold in difficultyPreset.accuracyThresholds:
 					if distToY > threshold:
 						break
 					accuracyIndex += 1
 				
 				if accuracyIndex > -1:
-					lastNote.points = accuracyPoints[accuracyIndex]
+					lastNote.points = difficultyPreset.accuracyPoints[accuracyIndex]
 					
 					playing[index] = lastNote
 					var eventAsset : EventAsset = lastNote.eventToPlay
@@ -136,3 +135,8 @@ func _on_area_2d_area_exited(area):
 		miss()
 		
 	area.get_parent().queue_free()
+	
+func set_difficulty(preset : DifficultyPreset):
+	difficultyPreset = preset
+	$"../Notes".speed = difficultyPreset.speed
+	musicController.update_fall_duration()

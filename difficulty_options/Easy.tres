@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DifficultyPreset" load_steps=2 format=3 uid="uid://ctgloen2cawck"]
+
+[ext_resource type="Script" path="res://scripts/DifficultyPreset.gd" id="1_2rdv0"]
+
+[resource]
+script = ExtResource("1_2rdv0")
+speed = 200.0
+accuracyThresholds = Array[int]([80, 40, 15])
+accuracyPoints = Array[int]([50, 100, 150])

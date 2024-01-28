@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmxcn2iqij3b0"]
+[gd_scene load_steps=14 format=3 uid="uid://cmxcn2iqij3b0"]
 
 [ext_resource type="Script" path="res://scripts/Notes.gd" id="1_6pve0"]
 [ext_resource type="Script" path="res://scripts/MusicController.gd" id="1_13a6j"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://cbqjsfr702rtf" path="res://Scenes/NoteGoal.tscn" id="5_1jy35"]
 [ext_resource type="FontFile" uid="uid://cayevfghig8n1" path="res://ui/Super Funky.ttf" id="5_5ujik"]
 [ext_resource type="PackedScene" uid="uid://6inb258mgxsu" path="res://Scenes/stage.tscn" id="6_brsos"]
+[ext_resource type="Resource" uid="uid://ctgloen2cawck" path="res://difficulty_options/Easy.tres" id="8_5drj2"]
+[ext_resource type="Resource" uid="uid://dqborryelr6hw" path="res://difficulty_options/Medium.tres" id="9_6ybpf"]
+[ext_resource type="Resource" uid="uid://dnuw6jowmhd1u" path="res://difficulty_options/Epic.tres" id="10_4kapv"]
 
 [sub_resource type="EventAsset" id="EventAsset_wtgv6"]
 is_oneshot = true
@@ -79,8 +82,6 @@ theme_override_constants/separation = 200
 alignment = 1
 script = ExtResource("2_icjoi")
 musicController = NodePath("../../MusicController")
-accuracyThresholds = Array[int]([40, 20, 10])
-accuracyPoints = Array[int]([100, 200, 300])
 
 [node name="Note1" parent="NoteArea/Goal" instance=ExtResource("5_1jy35")]
 layout_mode = 2
@@ -149,6 +150,26 @@ grow_vertical = 2
 color = Color(0.188235, 1, 1, 0.537255)
 script = ExtResource("3_oa3m8")
 goal = NodePath("../NoteArea/Goal")
+easyPreset = ExtResource("8_5drj2")
+mediumPreset = ExtResource("9_6ybpf")
+epicPreset = ExtResource("10_4kapv")
+
+[node name="PlayEasy" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -372.0
+offset_top = -55.5
+offset_right = -175.0
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_5ujik")
+theme_override_font_sizes/font_size = 64
+text = "Easy"
 
 [node name="Play" type="Button" parent="Menu"]
 layout_mode = 1
@@ -157,15 +178,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.5
-offset_top = -15.5
-offset_right = 20.5
-offset_bottom = 15.5
+offset_left = -130.0
+offset_top = -57.0
+offset_right = 160.0
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_5ujik")
 theme_override_font_sizes/font_size = 64
-text = "Play"
+text = "Medium"
 
 [node name="Victory" type="Label" parent="Menu"]
 visible = false
@@ -179,6 +200,23 @@ theme_override_font_sizes/font_size = 128
 text = "Victory!"
 horizontal_alignment = 1
 
+[node name="PlayEpic" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 196.0
+offset_top = -55.0
+offset_right = 381.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_5ujik")
+theme_override_font_sizes/font_size = 64
+text = "Epic"
+
 [node name="Stage" parent="." instance=ExtResource("6_brsos")]
 
 [connection signal="on_beat" from="MusicController" to="Stage" method="trigger_beat"]
@@ -188,4 +226,6 @@ horizontal_alignment = 1
 [connection signal="area_exit" from="NoteArea/Goal/Note4" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="area_exit" from="NoteArea/Goal/Note5" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
 [connection signal="area_exit" from="NoteArea/Goal/Note6" to="NoteArea/Goal" method="_on_area_2d_area_exited"]
-[connection signal="pressed" from="Menu/Play" to="Menu" method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/PlayEasy" to="Menu" method="play_easy"]
+[connection signal="pressed" from="Menu/Play" to="Menu" method="play_medium"]
+[connection signal="pressed" from="Menu/PlayEpic" to="Menu" method="play_epic"]

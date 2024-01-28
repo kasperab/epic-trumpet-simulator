@@ -82,9 +82,10 @@ func _ready():
 	playbackInstance = FMODRuntime.create_instance(backgroundMusic)
 	playbackInstance.set_callback(callable, FMODStudioModule.FMOD_STUDIO_EVENT_CALLBACK_TIMELINE_BEAT)
 	
-	noteFallBeatDuration = time_to_beat(notesController.get_fall_duration())
-	
 	reset()
+	
+func update_fall_duration():
+	noteFallBeatDuration = time_to_beat(notesController.get_fall_duration())
 	
 func start():
 	beatCounter = -1
