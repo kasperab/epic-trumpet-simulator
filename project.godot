@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Global Game Jam 2024"
+config/name="Epic Trumpet Simulator"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.1")
+config/icon="res://images/epicicon.png"
 
 [autoload]
 
